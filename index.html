@@ -3,8 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pao | Creative Developer & Designer</title>
-    <meta name="description" content="Portafolio de Pao  - Desarrollador creativo y diseñador UI/UX. Proyectos web, apps móviles y branding.">
+    <title>STUDIO MORA — Creative Developer & Designer</title>
+    <meta name="description" content="Portafolio creativo de Studio Mora. Desarrollador y diseñador especializado en experiencias digitales únicas.">
+    <meta name="keywords" content="portafolio, desarrollador, diseñador, creative, frontend, UI/UX">
+    <meta name="author" content="Studio Mora">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="STUDIO MORA — Creative Developer">
+    <meta property="og:description" content="Portafolio creativo con estilo neo-brutalist">
+    <meta property="og:type" content="website">
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -14,7 +21,7 @@
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Space+Mono:wght@400;700&family=Archivo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     
     <script>
         tailwind.config = {
@@ -22,62 +29,46 @@
             theme: {
                 extend: {
                     fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        display: ['Space Grotesk', 'sans-serif']
+                        sans: ['Archivo', 'sans-serif'],
+                        serif: ['Instrument Serif', 'serif'],
+                        mono: ['Space Mono', 'monospace']
                     },
                     colors: {
-                        dark: {
-                            900: '#0a0a0f',
-                            800: '#12121a',
-                            700: '#1a1a24',
-                            600: '#242430',
-                        },
-                        accent: {
-                            violet: '#8b5cf6',
-                            cyan: '#06b6d4',
-                            pink: '#ec4899',
-                            orange: '#f97316',
+                        brand: {
+                            yellow: '#FFE600',
+                            red: '#FF3E00',
+                            cream: '#F5F1E8',
+                            black: '#0A0A0A',
+                            pink: '#FF8CC6',
+                            blue: '#4D9DE0',
+                            green: '#7FD15B',
                         }
                     },
+                    boxShadow: {
+                        'brutal': '6px 6px 0px 0px #0A0A0A',
+                        'brutal-lg': '10px 10px 0px 0px #0A0A0A',
+                        'brutal-xl': '14px 14px 0px 0px #0A0A0A',
+                        'brutal-yellow': '6px 6px 0px 0px #FFE600',
+                        'brutal-red': '6px 6px 0px 0px #FF3E00',
+                    },
                     animation: {
-                        'fade-in': 'fadeIn 0.8s ease-out',
-                        'slide-up': 'slideUp 0.8s ease-out',
-                        'slide-right': 'slideRight 0.8s ease-out',
-                        'gradient': 'gradient 8s ease infinite',
-                        'float': 'float 6s ease-in-out infinite',
-                        'blob': 'blob 7s infinite',
-                        'glow': 'glow 2s ease-in-out infinite alternate',
+                        'marquee': 'marquee 25s linear infinite',
+                        'wiggle': 'wiggle 2s ease-in-out infinite',
+                        'spin-slow': 'spin 8s linear infinite',
+                        'bounce-soft': 'bounceSoft 2s ease-in-out infinite',
                     },
                     keyframes: {
-                        fadeIn: {
-                            '0%': { opacity: '0' },
-                            '100%': { opacity: '1' }
+                        marquee: {
+                            '0%': { transform: 'translateX(0%)' },
+                            '100%': { transform: 'translateX(-50%)' }
                         },
-                        slideUp: {
-                            '0%': { opacity: '0', transform: 'translateY(40px)' },
-                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        wiggle: {
+                            '0%, 100%': { transform: 'rotate(-3deg)' },
+                            '50%': { transform: 'rotate(3deg)' }
                         },
-                        slideRight: {
-                            '0%': { opacity: '0', transform: 'translateX(-40px)' },
-                            '100%': { opacity: '1', transform: 'translateX(0)' }
-                        },
-                        gradient: {
-                            '0%, 100%': { 'background-position': '0% 50%' },
-                            '50%': { 'background-position': '100% 50%' }
-                        },
-                        float: {
-                            '0%, 100%': { transform: 'translateY(0) rotate(0deg)' },
-                            '50%': { transform: 'translateY(-20px) rotate(3deg)' }
-                        },
-                        blob: {
-                            '0%': { transform: 'translate(0px, 0px) scale(1)' },
-                            '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
-                            '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
-                            '100%': { transform: 'translate(0px, 0px) scale(1)' }
-                        },
-                        glow: {
-                            '0%': { boxShadow: '0 0 20px rgba(139, 92, 246, 0.5)' },
-                            '100%': { boxShadow: '0 0 40px rgba(6, 182, 212, 0.8)' }
+                        bounceSoft: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' }
                         }
                     }
                 }
@@ -86,756 +77,837 @@
     </script>
     
     <style>
-        .gradient-bg {
-            background: linear-gradient(-45deg, #8b5cf6, #06b6d4, #ec4899, #f97316);
-            background-size: 400% 400%;
-            animation: gradient 15s ease infinite;
+        * {
+            -webkit-font-smoothing: antialiased;
         }
-        .gradient-text {
-            background: linear-gradient(135deg, #8b5cf6 0%, #06b6d4 50%, #ec4899 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+        
+        .border-brutal {
+            border: 3px solid #0A0A0A;
         }
-        .glass {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+        
+        .dark .border-brutal {
+            border-color: #F5F1E8;
         }
-        .dark .glass {
-            background: rgba(10, 10, 15, 0.5);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        .card-hover {
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .card-hover:hover {
-            transform: translateY(-8px);
-        }
-        .card-hover:hover .card-image {
-            transform: scale(1.05);
-        }
-        .card-image {
-            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .hero-bg {
-            background-image: radial-gradient(circle at 20% 50%, rgba(139, 92, 246, 0.15) 0%, transparent 50%),
-                              radial-gradient(circle at 80% 80%, rgba(6, 182, 212, 0.15) 0%, transparent 50%),
-                              radial-gradient(circle at 40% 20%, rgba(236, 72, 153, 0.1) 0%, transparent 50%);
-        }
-        .grid-pattern {
-            background-image: 
-                linear-gradient(rgba(139, 92, 246, 0.05) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(139, 92, 246, 0.05) 1px, transparent 1px);
-            background-size: 50px 50px;
-        }
-        .scroll-indicator {
-            animation: bounce 2s infinite;
-        }
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-        .progress-bar {
-            transition: width 1.5s ease-out;
-        }
-        .text-stroke {
-            -webkit-text-stroke: 2px rgba(139, 92, 246, 0.3);
-            color: transparent;
-        }
-        .dark .text-stroke {
-            -webkit-text-stroke: 2px rgba(139, 92, 246, 0.5);
-        }
-        /* Scrollbar personalizado */
-        ::-webkit-scrollbar {
-            width: 10px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #0a0a0f;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: linear-gradient(180deg, #8b5cf6, #06b6d4);
-            border-radius: 5px;
-        }
-        .light ::-webkit-scrollbar-track {
-            background: #f3f4f6;
-        }
-        .filter-btn.active {
-            background: linear-gradient(135deg, #8b5cf6, #06b6d4);
-            color: white;
-        }
-        .project-overlay {
-            opacity: 0;
-            transition: opacity 0.4s ease;
-        }
-        .project-card:hover .project-overlay {
-            opacity: 1;
-        }
-        .project-card:hover .project-image {
-            transform: scale(1.1);
-        }
-        .project-image {
-            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .timeline-line {
-            background: linear-gradient(180deg, #8b5cf6, #06b6d4, #ec4899);
-        }
-        .blob-shape {
-            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
-        }
-        .marquee {
-            animation: marquee 30s linear infinite;
-        }
-        @keyframes marquee {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-        }
-        .hover-lift {
+        
+        .sticker {
+            transform: rotate(-6deg);
             transition: transform 0.3s ease;
         }
-        .hover-lift:hover {
-            transform: translateY(-5px);
+        
+        .sticker:hover {
+            transform: rotate(0deg) scale(1.05);
+        }
+        
+        .sticker-reverse {
+            transform: rotate(6deg);
+            transition: transform 0.3s ease;
+        }
+        
+        .sticker-reverse:hover {
+            transform: rotate(0deg) scale(1.05);
+        }
+        
+        .card-brutal {
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .card-brutal:hover {
+            transform: translate(-4px, -4px);
+            box-shadow: 10px 10px 0px 0px #0A0A0A;
+        }
+        
+        .dark .card-brutal:hover {
+            box-shadow: 10px 10px 0px 0px #F5F1E8;
+        }
+        
+        .btn-brutal {
+            transition: all 0.15s ease;
+            position: relative;
+        }
+        
+        .btn-brutal:hover {
+            transform: translate(-3px, -3px);
+            box-shadow: 9px 9px 0px 0px #0A0A0A;
+        }
+        
+        .btn-brutal:active {
+            transform: translate(0, 0);
+            box-shadow: 3px 3px 0px 0px #0A0A0A;
+        }
+        
+        .gradient-brutal {
+            background: repeating-linear-gradient(
+                45deg,
+                #FFE600,
+                #FFE600 10px,
+                #0A0A0A 10px,
+                #0A0A0A 20px
+            );
+        }
+        
+        .text-outline {
+            -webkit-text-stroke: 2px #0A0A0A;
+            color: transparent;
+        }
+        
+        .dark .text-outline {
+            -webkit-text-stroke: 2px #F5F1E8;
+        }
+        
+        .noise-bg {
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            opacity: 0.04;
+            pointer-events: none;
+        }
+        
+        .scroll-indicator {
+            animation: bounceSoft 2s infinite;
+        }
+        
+        .project-card:hover .project-image {
+            transform: scale(1.05) rotate(-1deg);
+        }
+        
+        .project-image {
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .marquee-track {
+            animation: marquee 30s linear infinite;
+        }
+        
+        .marquee-track:hover {
+            animation-play-state: paused;
+        }
+        
+        /* Scrollbar brutal */
+        ::-webkit-scrollbar {
+            width: 14px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #F5F1E8;
+            border-left: 3px solid #0A0A0A;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: #FFE600;
+            border: 3px solid #0A0A0A;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: #FF3E00;
+        }
+        
+        .dark ::-webkit-scrollbar-track {
+            background: #0A0A0A;
+            border-left: 3px solid #F5F1E8;
+        }
+        
+        .dark ::-webkit-scrollbar-thumb {
+            background: #FFE600;
+            border: 3px solid #F5F1E8;
+        }
+        
+        .blob-1 {
+            border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+        }
+        
+        .tag-pill {
+            display: inline-block;
+            padding: 4px 12px;
+            border: 2px solid #0A0A0A;
+            background: white;
+            font-family: 'Space Mono', monospace;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        .dark .tag-pill {
+            border-color: #F5F1E8;
+            background: #0A0A0A;
+            color: #F5F1E8;
+        }
+        
+        .ticker-item {
+            white-space: nowrap;
+        }
+        
+        .hero-title {
+            font-size: clamp(3rem, 10vw, 9rem);
+            line-height: 0.9;
+            letter-spacing: -0.04em;
+        }
+        
+        .section-number {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+        }
+        
+        @media (max-width: 768px) {
+            .border-brutal {
+                border-width: 2px;
+            }
+            .shadow-brutal {
+                box-shadow: 4px 4px 0px 0px #0A0A0A;
+            }
+            .shadow-brutal-lg {
+                box-shadow: 6px 6px 0px 0px #0A0A0A;
+            }
         }
     </style>
 </head>
-<body class="bg-white dark:bg-dark-900 font-sans transition-colors duration-500 overflow-x-hidden">
+<body class="bg-brand-cream dark:bg-brand-black text-brand-black dark:text-brand-cream font-sans transition-colors duration-300 overflow-x-hidden">
 
-    <!-- Cursor personalizado (solo desktop) -->
-    <div id="cursor" class="fixed w-8 h-8 border-2 border-accent-violet rounded-full pointer-events-none z-[100] hidden lg:block transition-transform duration-150 mix-blend-difference" style="transform: translate(-50%, -50%);"></div>
+    <!-- Noise overlay -->
+    <div class="noise-bg fixed inset-0 z-0 pointer-events-none"></div>
 
-    <!-- Header / Navbar -->
-    <header class="fixed top-0 left-0 right-0 z-50 glass">
+    <!-- Top Ticker -->
+    <div class="bg-brand-black dark:bg-brand-cream text-brand-cream dark:text-brand-black border-b-3 border-brutal py-3 overflow-hidden relative z-10">
+        <div class="flex marquee-track">
+            <div class="flex items-center space-x-8 px-4 font-mono text-xs font-bold uppercase tracking-widest">
+                <span>✦ DISPONIBLE PARA PROYECTOS</span>
+                <span>✦ OTOÑO 2026</span>
+                <span>✦ +5 AÑOS EXPERIENCIA</span>
+                <span>✦ MADRID / REMOTO</span>
+                <span>✦ HABLEMOS →</span>
+                <span>✦ DISPONIBLE PARA PROYECTOS</span>
+                <span>✦ OTOÑO 2026</span>
+                <span>✦ +5 AÑOS EXPERIENCIA</span>
+                <span>✦ MADRID / REMOTO</span>
+                <span>✦ HABLEMOS →</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="sticky top-0 z-40 bg-brand-cream dark:bg-brand-black border-b-3 border-brutal">
         <nav class="container mx-auto px-4 py-4">
             <div class="flex items-center justify-between">
                 <!-- Logo -->
-                <a href="#" class="flex items-center space-x-2 group">
-                    <div class="w-10 h-10 gradient-bg rounded-xl flex items-center justify-center font-display font-bold text-white text-lg group-hover:scale-110 transition">
-                        AR
+                <a href="#" class="flex items-center space-x-3 group">
+                    <div class="w-12 h-12 bg-brand-yellow border-brutal shadow-brutal flex items-center justify-center font-serif font-bold text-2xl group-hover:bg-brand-red transition-colors">
+                        M
                     </div>
-                    <span class="font-display font-bold text-lg text-gray-900 dark:text-white hidden sm:block">
-                        Pao<span class="gradient-text">Rivera</span>
-                    </span>
+                    <div class="hidden sm:block">
+                        <div class="font-serif text-2xl font-bold leading-none">STUDIO</div>
+                        <div class="font-mono text-xs tracking-widest">MORA™ / 2026</div>
+                    </div>
                 </a>
 
-                <!-- Nav Links (desktop) -->
-                <ul class="hidden lg:flex items-center space-x-8">
-                    <li><a href="#inicio" class="text-gray-700 dark:text-gray-300 hover:text-accent-violet dark:hover:text-accent-violet font-medium transition text-sm">Inicio</a></li>
-                    <li><a href="#sobre-mi" class="text-gray-700 dark:text-gray-300 hover:text-accent-violet dark:hover:text-accent-violet font-medium transition text-sm">Sobre mí</a></li>
-                    <li><a href="#skills" class="text-gray-700 dark:text-gray-300 hover:text-accent-violet dark:hover:text-accent-violet font-medium transition text-sm">Skills</a></li>
-                    <li><a href="#proyectos" class="text-gray-700 dark:text-gray-300 hover:text-accent-violet dark:hover:text-accent-violet font-medium transition text-sm">Proyectos</a></li>
-                    <li><a href="#experiencia" class="text-gray-700 dark:text-gray-300 hover:text-accent-violet dark:hover:text-accent-violet font-medium transition text-sm">Experiencia</a></li>
-                    <li><a href="#testimonios" class="text-gray-700 dark:text-gray-300 hover:text-accent-violet dark:hover:text-accent-violet font-medium transition text-sm">Testimonios</a></li>
-                    <li><a href="#contacto" class="text-gray-700 dark:text-gray-300 hover:text-accent-violet dark:hover:text-accent-violet font-medium transition text-sm">Contacto</a></li>
+                <!-- Nav Desktop -->
+                <ul class="hidden lg:flex items-center space-x-1">
+                    <li><a href="#inicio" class="px-4 py-2 font-mono text-xs font-bold uppercase tracking-wider hover:bg-brand-yellow border-2 border-transparent hover:border-brand-black transition">01 / Inicio</a></li>
+                    <li><a href="#sobre-mi" class="px-4 py-2 font-mono text-xs font-bold uppercase tracking-wider hover:bg-brand-yellow border-2 border-transparent hover:border-brand-black transition">02 / Sobre</a></li>
+                    <li><a href="#trabajos" class="px-4 py-2 font-mono text-xs font-bold uppercase tracking-wider hover:bg-brand-yellow border-2 border-transparent hover:border-brand-black transition">03 / Trabajos</a></li>
+                    <li><a href="#proceso" class="px-4 py-2 font-mono text-xs font-bold uppercase tracking-wider hover:bg-brand-yellow border-2 border-transparent hover:border-brand-black transition">04 / Proceso</a></li>
+                    <li><a href="#contacto" class="px-4 py-2 font-mono text-xs font-bold uppercase tracking-wider hover:bg-brand-yellow border-2 border-transparent hover:border-brand-black transition">05 / Contacto</a></li>
                 </ul>
 
                 <!-- Actions -->
-                <div class="flex items-center space-x-3">
-                    <button id="themeToggle" class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-dark-700 transition">
-                        <i class="fas fa-moon text-gray-700 dark:hidden"></i>
-                        <i class="fas fa-sun text-accent-cyan hidden dark:inline"></i>
+                <div class="flex items-center space-x-2">
+                    <button id="themeToggle" class="w-11 h-11 bg-brand-yellow border-brutal shadow-brutal flex items-center justify-center hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all">
+                        <i class="fas fa-moon text-brand-black dark:hidden"></i>
+                        <i class="fas fa-sun text-brand-black hidden dark:inline"></i>
                     </button>
 
-                    <a href="#contacto" class="hidden md:inline-flex items-center gradient-bg text-white px-5 py-2 rounded-full font-semibold hover:opacity-90 transition shadow-lg text-sm">
-                        <i class="fas fa-paper-plane mr-2"></i>Hablemos
+                    <a href="#contacto" class="hidden md:flex items-center bg-brand-red text-brand-cream border-brutal shadow-brutal px-5 py-2.5 font-mono text-xs font-bold uppercase tracking-wider btn-brutal">
+                        <span>Hablemos</span>
+                        <i class="fas fa-arrow-right ml-2"></i>
                     </a>
 
-                    <button id="mobileMenuBtn" class="lg:hidden p-2 rounded-full hover:bg-gray-100 dark:hover:bg-dark-700 transition">
-                        <i class="fas fa-bars text-gray-700 dark:text-white"></i>
+                    <button id="mobileMenuBtn" class="lg:hidden w-11 h-11 bg-brand-yellow border-brutal shadow-brutal flex items-center justify-center">
+                        <i class="fas fa-bars"></i>
                     </button>
                 </div>
             </div>
 
-            <!-- Mobile menu -->
-            <ul id="mobileMenu" class="hidden lg:hidden mt-4 space-y-2 pb-4">
-                <li><a href="#inicio" class="block py-2 text-gray-700 dark:text-gray-300 hover:text-accent-violet">Inicio</a></li>
-                <li><a href="#sobre-mi" class="block py-2 text-gray-700 dark:text-gray-300 hover:text-accent-violet">Sobre mí</a></li>
-                <li><a href="#skills" class="block py-2 text-gray-700 dark:text-gray-300 hover:text-accent-violet">Skills</a></li>
-                <li><a href="#proyectos" class="block py-2 text-gray-700 dark:text-gray-300 hover:text-accent-violet">Proyectos</a></li>
-                <li><a href="#experiencia" class="block py-2 text-gray-700 dark:text-gray-300 hover:text-accent-violet">Experiencia</a></li>
-                <li><a href="#testimonios" class="block py-2 text-gray-700 dark:text-gray-300 hover:text-accent-violet">Testimonios</a></li>
-                <li><a href="#contacto" class="block py-2 text-gray-700 dark:text-gray-300 hover:text-accent-violet">Contacto</a></li>
+            <!-- Mobile Menu -->
+            <ul id="mobileMenu" class="hidden lg:hidden mt-4 space-y-1 pb-4 border-t-2 border-brand-black dark:border-brand-cream pt-4">
+                <li><a href="#inicio" class="block py-3 px-4 font-mono text-sm font-bold uppercase border-2 border-brand-black dark:border-brand-cream hover:bg-brand-yellow">01 / Inicio</a></li>
+                <li><a href="#sobre-mi" class="block py-3 px-4 font-mono text-sm font-bold uppercase border-2 border-brand-black dark:border-brand-cream hover:bg-brand-yellow">02 / Sobre mí</a></li>
+                <li><a href="#trabajos" class="block py-3 px-4 font-mono text-sm font-bold uppercase border-2 border-brand-black dark:border-brand-cream hover:bg-brand-yellow">03 / Trabajos</a></li>
+                <li><a href="#proceso" class="block py-3 px-4 font-mono text-sm font-bold uppercase border-2 border-brand-black dark:border-brand-cream hover:bg-brand-yellow">04 / Proceso</a></li>
+                <li><a href="#contacto" class="block py-3 px-4 font-mono text-sm font-bold uppercase border-2 border-brand-black dark:border-brand-cream hover:bg-brand-yellow">05 / Contacto</a></li>
             </ul>
         </nav>
     </header>
 
-    <!-- Hero Section -->
-    <section id="inicio" class="relative min-h-screen flex items-center hero-bg grid-pattern pt-20">
-        <!-- Blobs decorativos -->
-        <div class="absolute top-20 right-10 w-72 h-72 bg-accent-violet/20 rounded-full blur-3xl animate-blob"></div>
-        <div class="absolute bottom-20 left-10 w-96 h-96 bg-accent-cyan/20 rounded-full blur-3xl animate-blob" style="animation-delay: 2s;"></div>
-        <div class="absolute top-1/2 left-1/3 w-64 h-64 bg-accent-pink/10 rounded-full blur-3xl animate-blob" style="animation-delay: 4s;"></div>
+    <!-- HERO -->
+    <section id="inicio" class="relative min-h-[90vh] border-b-3 border-brutal overflow-hidden">
+        <div class="container mx-auto px-4 py-16 md:py-24 relative z-10">
+            <div class="grid lg:grid-cols-12 gap-8">
+                <!-- Left Column -->
+                <div class="lg:col-span-8">
+                    <!-- Status badge -->
+                    <div class="inline-flex items-center space-x-3 bg-brand-yellow border-brutal shadow-brutal px-4 py-2 mb-8 sticker">
+                        <span class="w-2 h-2 bg-brand-green rounded-full animate-pulse border-2 border-brand-black"></span>
+                        <span class="font-mono text-xs font-bold uppercase tracking-widest">Disponible · Oct 2026</span>
+                    </div>
 
-        <div class="container mx-auto px-4 py-20 relative z-10">
-            <div class="grid lg:grid-cols-2 gap-12 items-center">
-                <div class="animate-slide-up">
-                    <div class="inline-flex items-center space-x-2 glass px-4 py-2 rounded-full mb-6">
-                        <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
-                        <span class="text-sm text-gray-700 dark:text-gray-300">Disponible para proyectos</span>
-                    </div>
-                    <h1 class="text-5xl md:text-6xl lg:text-7xl font-display font-bold leading-tight mb-6">
-                        Hola, soy <br>
-                        <span class="gradient-text">Pao Rivera</span>
+                    <!-- Title -->
+                    <h1 class="hero-title font-serif font-bold mb-8">
+                        <span class="block">Creative</span>
+                        <span class="block italic text-outline">Developer</span>
+                        <span class="block">& <span class="bg-brand-red text-brand-cream px-4 inline-block transform -rotate-2">Designer</span></span>
                     </h1>
-                    <div class="flex items-center space-x-3 mb-6">
-                        <span class="text-2xl md:text-3xl font-display font-semibold text-gray-900 dark:text-white">
-                            <span id="typewriter" class="border-r-2 border-accent-violet pr-1"></span>
-                        </span>
+
+                    <!-- Description -->
+                    <div class="grid md:grid-cols-2 gap-8 mb-8">
+                        <p class="text-lg md:text-xl leading-relaxed max-w-md">
+                            Construyo <span class="bg-brand-yellow px-1 border-2 border-brand-black">experiencias digitales</span> que combinan estética audaz con código impecable.
+                        </p>
+                        <p class="text-lg md:text-xl leading-relaxed max-w-md font-serif italic">
+                            "El diseño no es solo cómo se ve. El diseño es cómo funciona — y cómo se siente."
+                        </p>
                     </div>
-                    <p class="text-lg text-gray-600 dark:text-gray-400 mb-8 max-w-lg leading-relaxed">
-                        Transformo ideas en experiencias digitales memorables. +5 años creando productos web y móviles que enamoran a los usuarios.
-                    </p>
-                    <div class="flex flex-wrap gap-4 mb-8">
-                        <a href="#proyectos" class="gradient-bg text-white px-8 py-4 rounded-full font-semibold hover:opacity-90 transition shadow-lg hover:shadow-xl">
-                            <i class="fas fa-rocket mr-2"></i>Ver proyectos
+
+                    <!-- CTAs -->
+                    <div class="flex flex-wrap gap-4">
+                        <a href="#trabajos" class="bg-brand-black dark:bg-brand-cream text-brand-cream dark:text-brand-black border-brutal shadow-brutal-lg px-8 py-4 font-mono text-sm font-bold uppercase tracking-wider btn-brutal inline-flex items-center">
+                            <span>Ver trabajos</span>
+                            <i class="fas fa-arrow-down ml-3"></i>
                         </a>
-                        <a href="#contacto" class="glass text-gray-900 dark:text-white px-8 py-4 rounded-full font-semibold hover:bg-gray-100 dark:hover:bg-dark-700 transition">
-                            <i class="fas fa-download mr-2"></i>Descargar CV
-                        </a>
-                    </div>
-                    <!-- Social -->
-                    <div class="flex items-center space-x-4">
-                        <span class="text-sm text-gray-500">Sígueme:</span>
-                        <a href="#" class="w-10 h-10 glass rounded-full flex items-center justify-center hover:gradient-bg hover:text-white transition text-gray-700 dark:text-gray-300">
-                            <i class="fab fa-github"></i>
-                        </a>
-                        <a href="#" class="w-10 h-10 glass rounded-full flex items-center justify-center hover:gradient-bg hover:text-white transition text-gray-700 dark:text-gray-300">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                        <a href="#" class="w-10 h-10 glass rounded-full flex items-center justify-center hover:gradient-bg hover:text-white transition text-gray-700 dark:text-gray-300">
-                            <i class="fab fa-dribbble"></i>
-                        </a>
-                        <a href="#" class="w-10 h-10 glass rounded-full flex items-center justify-center hover:gradient-bg hover:text-white transition text-gray-700 dark:text-gray-300">
-                            <i class="fab fa-behance"></i>
+                        <a href="#contacto" class="bg-brand-cream dark:bg-brand-black text-brand-black dark:text-brand-cream border-brutal shadow-brutal-lg px-8 py-4 font-mono text-sm font-bold uppercase tracking-wider btn-brutal inline-flex items-center">
+                            <span>Iniciar proyecto</span>
+                            <i class="fas fa-arrow-right ml-3"></i>
                         </a>
                     </div>
                 </div>
 
-                <!-- Hero visual -->
-                <div class="relative animate-float hidden lg:block">
-                    <div class="relative w-full max-w-md mx-auto">
-                        <!-- Círculos decorativos -->
-                        <div class="absolute inset-0 gradient-bg rounded-full blur-3xl opacity-30"></div>
-                        <div class="relative glass rounded-3xl p-8 shadow-2xl">
-                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&h=500&fit=crop" 
-                                 alt="Alex Rivera" 
-                                 class="w-full aspect-square object-cover rounded-2xl">
-                            
-                            <!-- Badges flotantes -->
-                            <div class="absolute -top-4 -right-4 glass rounded-2xl p-4 shadow-xl animate-float">
-                                <div class="flex items-center space-x-2">
-                                    <i class="fas fa-code text-accent-violet text-xl"></i>
-                                    <div>
-                                        <div class="text-xs text-gray-500">Proyectos</div>
-                                        <div class="font-bold text-gray-900 dark:text-white">+120</div>
-                                    </div>
-                                </div>
+                <!-- Right Column - Visual -->
+                <div class="lg:col-span-4 relative">
+                    <!-- Main image card -->
+                    <div class="relative sticker-reverse">
+                        <div class="bg-brand-yellow border-brutal shadow-brutal-xl p-3">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=700&fit=crop" 
+                                 alt="Studio Mora" 
+                                 class="w-full aspect-[4/5] object-cover border-2 border-brand-black">
+                        </div>
+                        
+                        <!-- Floating sticker 1 -->
+                        <div class="absolute -top-6 -right-6 bg-brand-red text-brand-cream border-brutal shadow-brutal px-4 py-3 sticker animate-wiggle">
+                            <div class="font-mono text-xs font-bold uppercase">+120</div>
+                            <div class="font-serif text-lg italic">proyectos</div>
+                        </div>
+                        
+                        <!-- Floating sticker 2 -->
+                        <div class="absolute -bottom-6 -left-6 bg-brand-cream dark:bg-brand-black border-brutal shadow-brutal px-4 py-3 sticker-reverse">
+                            <div class="flex items-center space-x-2">
+                                <i class="fas fa-star text-brand-yellow"></i>
+                                <span class="font-mono text-xs font-bold">5.0 / 5.0</span>
                             </div>
-                            <div class="absolute -bottom-4 -left-4 glass rounded-2xl p-4 shadow-xl animate-float" style="animation-delay: 1s;">
-                                <div class="flex items-center space-x-2">
-                                    <i class="fas fa-star text-accent-orange text-xl"></i>
-                                    <div>
-                                        <div class="text-xs text-gray-500">Rating</div>
-                                        <div class="font-bold text-gray-900 dark:text-white">5.0/5</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="absolute top-1/2 -right-8 glass rounded-2xl p-3 shadow-xl animate-float" style="animation-delay: 2s;">
-                                <i class="fas fa-award text-accent-cyan text-2xl"></i>
-                            </div>
+                            <div class="font-serif text-sm italic">rating</div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Stats -->
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mt-20">
-                <div class="glass rounded-2xl p-6 text-center hover-lift">
-                    <div class="text-4xl font-display font-bold gradient-text mb-1">120+</div>
-                    <div class="text-sm text-gray-600 dark:text-gray-400">Proyectos completados</div>
+            <!-- Stats Bar -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-16">
+                <div class="bg-brand-cream dark:bg-brand-black border-brutal shadow-brutal p-6 card-brutal">
+                    <div class="font-serif text-5xl font-bold mb-1">120<span class="text-brand-red">+</span></div>
+                    <div class="font-mono text-xs uppercase tracking-widest">Proyectos</div>
                 </div>
-                <div class="glass rounded-2xl p-6 text-center hover-lift">
-                    <div class="text-4xl font-display font-bold gradient-text mb-1">80+</div>
-                    <div class="text-sm text-gray-600 dark:text-gray-400">Clientes felices</div>
+                <div class="bg-brand-yellow border-brutal shadow-brutal p-6 card-brutal">
+                    <div class="font-serif text-5xl font-bold mb-1">80<span class="text-brand-red">+</span></div>
+                    <div class="font-mono text-xs uppercase tracking-widest">Clientes</div>
                 </div>
-                <div class="glass rounded-2xl p-6 text-center hover-lift">
-                    <div class="text-4xl font-display font-bold gradient-text mb-1">5+</div>
-                    <div class="text-sm text-gray-600 dark:text-gray-400">Años de experiencia</div>
+                <div class="bg-brand-cream dark:bg-brand-black border-brutal shadow-brutal p-6 card-brutal">
+                    <div class="font-serif text-5xl font-bold mb-1">5<span class="text-brand-red">+</span></div>
+                    <div class="font-mono text-xs uppercase tracking-widest">Años Exp.</div>
                 </div>
-                <div class="glass rounded-2xl p-6 text-center hover-lift">
-                    <div class="text-4xl font-display font-bold gradient-text mb-1">15+</div>
-                    <div class="text-sm text-gray-600 dark:text-gray-400">Premios ganados</div>
+                <div class="bg-brand-red text-brand-cream border-brutal shadow-brutal p-6 card-brutal">
+                    <div class="font-serif text-5xl font-bold mb-1">15<span class="text-brand-yellow">+</span></div>
+                    <div class="font-mono text-xs uppercase tracking-widest">Premios</div>
                 </div>
             </div>
         </div>
 
         <!-- Scroll indicator -->
         <div class="absolute bottom-8 left-1/2 -translate-x-1/2 scroll-indicator">
-            <i class="fas fa-chevron-down text-accent-violet text-2xl"></i>
+            <div class="w-12 h-12 bg-brand-yellow border-brutal shadow-brutal flex items-center justify-center">
+                <i class="fas fa-arrow-down"></i>
+            </div>
         </div>
     </section>
 
-    <!-- Marquee de tecnologías -->
-    <section class="py-8 bg-gray-100 dark:bg-dark-800 overflow-hidden border-y border-gray-200 dark:border-dark-700">
-        <div class="flex whitespace-nowrap marquee">
-            <span class="mx-8 text-2xl font-display font-bold text-gray-400 dark:text-gray-600">REACT</span>
-            <span class="mx-8 text-2xl font-display font-bold text-gray-400 dark:text-gray-600">•</span>
-            <span class="mx-8 text-2xl font-display font-bold text-gray-400 dark:text-gray-600">NEXT.JS</span>
-            <span class="mx-8 text-2xl font-display font-bold text-gray-400 dark:text-gray-600">•</span>
-            <span class="mx-8 text-2xl font-display font-bold text-gray-400 dark:text-gray-600">TYPESCRIPT</span>
-            <span class="mx-8 text-2xl font-display font-bold text-gray-400 dark:text-gray-600">•</span>
-            <span class="mx-8 text-2xl font-display font-bold text-gray-400 dark:text-gray-600">NODE.JS</span>
-            <span class="mx-8 text-2xl font-display font-bold text-gray-400 dark:text-gray-600">•</span>
-            <span class="mx-8 text-2xl font-display font-bold text-gray-400 dark:text-gray-600">FIGMA</span>
-            <span class="mx-8 text-2xl font-display font-bold text-gray-400 dark:text-gray-600">•</span>
-            <span class="mx-8 text-2xl font-display font-bold text-gray-400 dark:text-gray-600">TAILWIND</span>
-            <span class="mx-8 text-2xl font-display font-bold text-gray-400 dark:text-gray-600">•</span>
-            <span class="mx-8 text-2xl font-display font-bold text-gray-400 dark:text-gray-600">REACT</span>
-            <span class="mx-8 text-2xl font-display font-bold text-gray-400 dark:text-gray-600">•</span>
-            <span class="mx-8 text-2xl font-display font-bold text-gray-400 dark:text-gray-600">NEXT.JS</span>
-            <span class="mx-8 text-2xl font-display font-bold text-gray-400 dark:text-gray-600">•</span>
-            <span class="mx-8 text-2xl font-display font-bold text-gray-400 dark:text-gray-600">TYPESCRIPT</span>
-            <span class="mx-8 text-2xl font-display font-bold text-gray-400 dark:text-gray-600">•</span>
-            <span class="mx-8 text-2xl font-display font-bold text-gray-400 dark:text-gray-600">NODE.JS</span>
-            <span class="mx-8 text-2xl font-display font-bold text-gray-400 dark:text-gray-600">•</span>
-            <span class="mx-8 text-2xl font-display font-bold text-gray-400 dark:text-gray-600">FIGMA</span>
-            <span class="mx-8 text-2xl font-display font-bold text-gray-400 dark:text-gray-600">•</span>
-            <span class="mx-8 text-2xl font-display font-bold text-gray-400 dark:text-gray-600">TAILWIND</span>
+    <!-- MARQUEE TECH -->
+    <section class="bg-brand-yellow border-b-3 border-brutal py-6 overflow-hidden">
+        <div class="flex marquee-track">
+            <div class="flex items-center space-x-12 px-6 font-serif text-4xl md:text-6xl font-bold italic">
+                <span>React</span><span class="text-brand-red">✦</span>
+                <span>Next.js</span><span class="text-brand-red">✦</span>
+                <span>TypeScript</span><span class="text-brand-red">✦</span>
+                <span>Figma</span><span class="text-brand-red">✦</span>
+                <span>Tailwind</span><span class="text-brand-red">✦</span>
+                <span>Node.js</span><span class="text-brand-red">✦</span>
+                <span>React</span><span class="text-brand-red">✦</span>
+                <span>Next.js</span><span class="text-brand-red">✦</span>
+                <span>TypeScript</span><span class="text-brand-red">✦</span>
+                <span>Figma</span><span class="text-brand-red">✦</span>
+                <span>Tailwind</span><span class="text-brand-red">✦</span>
+                <span>Node.js</span><span class="text-brand-red">✦</span>
+            </div>
         </div>
     </section>
 
-    <!-- Sobre mí -->
-    <section id="sobre-mi" class="py-20 bg-white dark:bg-dark-900">
+    <!-- SOBRE MÍ -->
+    <section id="sobre-mi" class="py-20 md:py-32 border-b-3 border-brutal">
         <div class="container mx-auto px-4">
-            <div class="grid lg:grid-cols-2 gap-12 items-center">
-                <div class="relative">
-                    <div class="relative">
-                        <div class="absolute -inset-4 gradient-bg rounded-3xl blur-2xl opacity-20"></div>
-                        <img src="https://images.unsplash.com/photo-1531891437562-4301cf35b7e4?w=600&h=700&fit=crop" 
-                             alt="Alex Rivera" 
-                             class="relative rounded-3xl shadow-2xl w-full object-cover">
-                    </div>
-                    <!-- Badge de experiencia -->
-                    <div class="absolute -bottom-6 -right-6 glass rounded-2xl p-6 shadow-xl hidden md:block">
-                        <div class="flex items-center space-x-3">
-                            <div class="w-14 h-14 gradient-bg rounded-xl flex items-center justify-center">
-                                <i class="fas fa-trophy text-white text-2xl"></i>
-                            </div>
-                            <div>
-                                <div class="text-3xl font-display font-bold gradient-text">5+</div>
-                                <div class="text-sm text-gray-600 dark:text-gray-400">Años de experiencia</div>
-                            </div>
+            <!-- Section header -->
+            <div class="flex items-baseline justify-between mb-12 pb-4 border-b-2 border-brand-black dark:border-brand-cream">
+                <div>
+                    <div class="section-number mb-2">[ 02 ] — SOBRE MÍ</div>
+                    <h2 class="font-serif text-5xl md:text-7xl font-bold">
+                        Quién <span class="italic">soy</span>
+                    </h2>
+                </div>
+                <div class="hidden md:block font-mono text-xs uppercase tracking-widest">
+                    Scroll ↓
+                </div>
+            </div>
+
+            <div class="grid lg:grid-cols-12 gap-8">
+                <!-- Image -->
+                <div class="lg:col-span-5">
+                    <div class="relative sticker">
+                        <div class="bg-brand-red border-brutal shadow-brutal-xl p-3">
+                            <img src="https://images.unsplash.com/photo-1531891437562-4301cf35b7e4?w=600&h=750&fit=crop" 
+                                 alt="Mora" 
+                                 class="w-full aspect-[4/5] object-cover border-2 border-brand-black">
+                        </div>
+                        <div class="absolute -bottom-4 -right-4 bg-brand-yellow border-brutal shadow-brutal px-4 py-2 sticker-reverse">
+                            <span class="font-mono text-xs font-bold uppercase">Madrid, ES</span>
                         </div>
                     </div>
                 </div>
 
-                <div>
-                    <span class="text-accent-violet font-semibold uppercase tracking-wider text-sm">Sobre mí</span>
-                    <h2 class="text-4xl md:text-5xl font-display font-bold text-gray-900 dark:text-white mt-2 mb-6">
-                        Un poco sobre <span class="gradient-text">quién soy</span>
-                    </h2>
-                    <p class="text-gray-600 dark:text-gray-400 text-lg mb-6 leading-relaxed">
-                        Soy un desarrollador creativo y diseñador UI/UX apasionado por crear experiencias digitales que combinan estética, funcionalidad y rendimiento.
-                    </p>
-                    <p class="text-gray-600 dark:text-gray-400 mb-8 leading-relaxed">
-                        Con más de 5 años de experiencia, he trabajado con startups y empresas Fortune 500, ayudándolas a transformar sus ideas en productos digitales exitosos. Mi enfoque combina diseño centrado en el usuario con código limpio y escalable.
+                <!-- Content -->
+                <div class="lg:col-span-7 space-y-6">
+                    <p class="text-xl md:text-2xl font-serif italic leading-relaxed">
+                        "Soy un desarrollador creativo obsesionado con los detalles. Creo que el buen diseño debe ser <span class="bg-brand-yellow px-1 border-2 border-brand-black">audaz, funcional y memorable</span>."
                     </p>
 
-                    <!-- Info cards -->
-                    <div class="grid grid-cols-2 gap-4 mb-8">
-                        <div class="glass rounded-xl p-4">
-                            <i class="fas fa-map-marker-alt text-accent-violet mb-2"></i>
-                            <div class="text-xs text-gray-500">Ubicación</div>
-                            <div class="font-semibold text-gray-900 dark:text-white">Madrid, España</div>
+                    <p class="text-lg leading-relaxed">
+                        Llevo más de 5 años transformando ideas en productos digitales que la gente ama usar. He trabajado con startups, agencias y marcas globales, siempre buscando el equilibrio perfecto entre estética y rendimiento.
+                    </p>
+
+                    <!-- Info Grid -->
+                    <div class="grid grid-cols-2 gap-4 pt-4">
+                        <div class="bg-brand-cream dark:bg-brand-black border-brutal shadow-brutal p-5 card-brutal">
+                            <i class="fas fa-map-marker-alt text-brand-red text-xl mb-2"></i>
+                            <div class="font-mono text-xs uppercase tracking-widest mb-1">Ubicación</div>
+                            <div class="font-serif text-xl font-bold">Madrid, España</div>
                         </div>
-                        <div class="glass rounded-xl p-4">
-                            <i class="fas fa-language text-accent-cyan mb-2"></i>
-                            <div class="text-xs text-gray-500">Idiomas</div>
-                            <div class="font-semibold text-gray-900 dark:text-white">ES, EN, PT</div>
+                        <div class="bg-brand-yellow border-brutal shadow-brutal p-5 card-brutal">
+                            <i class="fas fa-language text-brand-black text-xl mb-2"></i>
+                            <div class="font-mono text-xs uppercase tracking-widest mb-1">Idiomas</div>
+                            <div class="font-serif text-xl font-bold">ES · EN · PT</div>
                         </div>
-                        <div class="glass rounded-xl p-4">
-                            <i class="fas fa-graduation-cap text-accent-pink mb-2"></i>
-                            <div class="text-xs text-gray-500">Educación</div>
-                            <div class="font-semibold text-gray-900 dark:text-white">Ing. Informática</div>
+                        <div class="bg-brand-cream dark:bg-brand-black border-brutal shadow-brutal p-5 card-brutal">
+                            <i class="fas fa-graduation-cap text-brand-red text-xl mb-2"></i>
+                            <div class="font-mono text-xs uppercase tracking-widest mb-1">Educación</div>
+                            <div class="font-serif text-xl font-bold">Ing. Informática</div>
                         </div>
-                        <div class="glass rounded-xl p-4">
-                            <i class="fas fa-briefcase text-accent-orange mb-2"></i>
-                            <div class="text-xs text-gray-500">Freelance</div>
-                            <div class="font-semibold text-gray-900 dark:text-white">Disponible</div>
+                        <div class="bg-brand-red text-brand-cream border-brutal shadow-brutal p-5 card-brutal">
+                            <i class="fas fa-briefcase text-brand-yellow text-xl mb-2"></i>
+                            <div class="font-mono text-xs uppercase tracking-widest mb-1">Estado</div>
+                            <div class="font-serif text-xl font-bold">Disponible</div>
                         </div>
                     </div>
 
-                    <a href="#contacto" class="inline-flex items-center gradient-bg text-white px-8 py-4 rounded-full font-semibold hover:opacity-90 transition shadow-lg">
-                        <i class="fas fa-envelope mr-2"></i>Contactar ahora
+                    <a href="#contacto" class="inline-flex items-center bg-brand-black dark:bg-brand-cream text-brand-cream dark:text-brand-black border-brutal shadow-brutal px-8 py-4 font-mono text-sm font-bold uppercase tracking-wider btn-brutal">
+                        <span>Descargar CV</span>
+                        <i class="fas fa-download ml-3"></i>
                     </a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Skills -->
-    <section id="skills" class="py-20 bg-gray-50 dark:bg-dark-800">
+    <!-- SKILLS -->
+    <section class="py-20 md:py-32 bg-brand-yellow border-b-3 border-brutal">
         <div class="container mx-auto px-4">
-            <div class="text-center mb-12">
-                <span class="text-accent-violet font-semibold uppercase tracking-wider text-sm">Mis habilidades</span>
-                <h2 class="text-4xl md:text-5xl font-display font-bold text-gray-900 dark:text-white mt-2 mb-4">
-                    Tecnologías que <span class="gradient-text">domino</span>
-                </h2>
-                <p class="text-gray-600 dark:text-gray-400 text-lg max-w-2xl mx-auto">
-                    Herramientas y tecnologías con las que trabajo día a día
-                </p>
-            </div>
-
-            <!-- Tabs -->
-            <div class="flex flex-wrap justify-center gap-2 mb-12">
-                <button onclick="showSkills('frontend')" class="skill-tab active px-6 py-3 rounded-full font-semibold text-sm transition gradient-bg text-white">Frontend</button>
-                <button onclick="showSkills('backend')" class="skill-tab px-6 py-3 rounded-full font-semibold text-sm transition glass text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-dark-700">Backend</button>
-                <button onclick="showSkills('design')" class="skill-tab px-6 py-3 rounded-full font-semibold text-sm transition glass text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-dark-700">Diseño</button>
-                <button onclick="showSkills('tools')" class="skill-tab px-6 py-3 rounded-full font-semibold text-sm transition glass text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-dark-700">Herramientas</button>
-            </div>
-
-            <!-- Frontend Skills -->
-            <div id="skills-frontend" class="skills-content grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-                <div class="glass rounded-2xl p-6">
-                    <div class="flex justify-between mb-2">
-                        <span class="font-semibold text-gray-900 dark:text-white flex items-center">
-                            <i class="fab fa-react text-accent-cyan mr-2"></i>React / Next.js
-                        </span>
-                        <span class="text-accent-violet font-bold">95%</span>
-                    </div>
-                    <div class="w-full bg-gray-200 dark:bg-dark-700 rounded-full h-2">
-                        <div class="progress-bar gradient-bg h-2 rounded-full" style="width: 95%"></div>
-                    </div>
-                </div>
-                <div class="glass rounded-2xl p-6">
-                    <div class="flex justify-between mb-2">
-                        <span class="font-semibold text-gray-900 dark:text-white flex items-center">
-                            <i class="fab fa-js text-yellow-400 mr-2"></i>TypeScript
-                        </span>
-                        <span class="text-accent-violet font-bold">90%</span>
-                    </div>
-                    <div class="w-full bg-gray-200 dark:bg-dark-700 rounded-full h-2">
-                        <div class="progress-bar gradient-bg h-2 rounded-full" style="width: 90%"></div>
-                    </div>
-                </div>
-                <div class="glass rounded-2xl p-6">
-                    <div class="flex justify-between mb-2">
-                        <span class="font-semibold text-gray-900 dark:text-white flex items-center">
-                            <i class="fab fa-vuejs text-green-500 mr-2"></i>Vue.js / Nuxt
-                        </span>
-                        <span class="text-accent-violet font-bold">85%</span>
-                    </div>
-                    <div class="w-full bg-gray-200 dark:bg-dark-700 rounded-full h-2">
-                        <div class="progress-bar gradient-bg h-2 rounded-full" style="width: 85%"></div>
-                    </div>
-                </div>
-                <div class="glass rounded-2xl p-6">
-                    <div class="flex justify-between mb-2">
-                        <span class="font-semibold text-gray-900 dark:text-white flex items-center">
-                            <i class="fas fa-wind text-cyan-500 mr-2"></i>Tailwind CSS
-                        </span>
-                        <span class="text-accent-violet font-bold">98%</span>
-                    </div>
-                    <div class="w-full bg-gray-200 dark:bg-dark-700 rounded-full h-2">
-                        <div class="progress-bar gradient-bg h-2 rounded-full" style="width: 98%"></div>
-                    </div>
+            <div class="flex items-baseline justify-between mb-12 pb-4 border-b-2 border-brand-black">
+                <div>
+                    <div class="section-number mb-2">[ 03 ] — SKILLS</div>
+                    <h2 class="font-serif text-5xl md:text-7xl font-bold">
+                        Lo que <span class="italic">hago</span>
+                    </h2>
                 </div>
             </div>
 
-            <!-- Backend Skills -->
-            <div id="skills-backend" class="skills-content hidden grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-                <div class="glass rounded-2xl p-6">
-                    <div class="flex justify-between mb-2">
-                        <span class="font-semibold text-gray-900 dark:text-white flex items-center">
-                            <i class="fab fa-node-js text-green-600 mr-2"></i>Node.js / Express
-                        </span>
-                        <span class="text-accent-violet font-bold">88%</span>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Skill 1 -->
+                <div class="bg-brand-cream dark:bg-brand-black border-brutal shadow-brutal-lg p-8 card-brutal">
+                    <div class="flex items-start justify-between mb-6">
+                        <div class="w-16 h-16 bg-brand-red border-brutal shadow-brutal flex items-center justify-center">
+                            <i class="fas fa-code text-brand-cream text-2xl"></i>
+                        </div>
+                        <span class="font-mono text-xs font-bold">01</span>
                     </div>
-                    <div class="w-full bg-gray-200 dark:bg-dark-700 rounded-full h-2">
-                        <div class="progress-bar gradient-bg h-2 rounded-full" style="width: 88%"></div>
-                    </div>
-                </div>
-                <div class="glass rounded-2xl p-6">
-                    <div class="flex justify-between mb-2">
-                        <span class="font-semibold text-gray-900 dark:text-white flex items-center">
-                            <i class="fab fa-python text-yellow-500 mr-2"></i>Python / Django
-                        </span>
-                        <span class="text-accent-violet font-bold">82%</span>
-                    </div>
-                    <div class="w-full bg-gray-200 dark:bg-dark-700 rounded-full h-2">
-                        <div class="progress-bar gradient-bg h-2 rounded-full" style="width: 82%"></div>
+                    <h3 class="font-serif text-3xl font-bold mb-3">Frontend</h3>
+                    <p class="mb-4 leading-relaxed">Interfaces rápidas, accesibles y hermosas con las tecnologías modernas.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="tag-pill">React</span>
+                        <span class="tag-pill">Next.js</span>
+                        <span class="tag-pill">TypeScript</span>
+                        <span class="tag-pill">Vue</span>
                     </div>
                 </div>
-                <div class="glass rounded-2xl p-6">
-                    <div class="flex justify-between mb-2">
-                        <span class="font-semibold text-gray-900 dark:text-white flex items-center">
-                            <i class="fas fa-database text-accent-cyan mr-2"></i>PostgreSQL / MongoDB
-                        </span>
-                        <span class="text-accent-violet font-bold">85%</span>
-                    </div>
-                    <div class="w-full bg-gray-200 dark:bg-dark-700 rounded-full h-2">
-                        <div class="progress-bar gradient-bg h-2 rounded-full" style="width: 85%"></div>
-                    </div>
-                </div>
-                <div class="glass rounded-2xl p-6">
-                    <div class="flex justify-between mb-2">
-                        <span class="font-semibold text-gray-900 dark:text-white flex items-center">
-                            <i class="fas fa-server text-accent-pink mr-2"></i>GraphQL / REST APIs
-                        </span>
-                        <span class="text-accent-violet font-bold">90%</span>
-                    </div>
-                    <div class="w-full bg-gray-200 dark:bg-dark-700 rounded-full h-2">
-                        <div class="progress-bar gradient-bg h-2 rounded-full" style="width: 90%"></div>
-                    </div>
-                </div>
-            </div>
 
-            <!-- Design Skills -->
-            <div id="skills-design" class="skills-content hidden grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-                <div class="glass rounded-2xl p-6">
-                    <div class="flex justify-between mb-2">
-                        <span class="font-semibold text-gray-900 dark:text-white flex items-center">
-                            <i class="fab fa-figma text-pink-500 mr-2"></i>Figma
-                        </span>
-                        <span class="text-accent-violet font-bold">95%</span>
+                <!-- Skill 2 -->
+                <div class="bg-brand-black text-brand-cream border-brutal shadow-brutal-lg p-8 card-brutal transform md:translate-y-8">
+                    <div class="flex items-start justify-between mb-6">
+                        <div class="w-16 h-16 bg-brand-yellow border-brutal shadow-brutal-yellow flex items-center justify-center">
+                            <i class="fas fa-server text-brand-black text-2xl"></i>
+                        </div>
+                        <span class="font-mono text-xs font-bold text-brand-yellow">02</span>
                     </div>
-                    <div class="w-full bg-gray-200 dark:bg-dark-700 rounded-full h-2">
-                        <div class="progress-bar gradient-bg h-2 rounded-full" style="width: 95%"></div>
-                    </div>
-                </div>
-                <div class="glass rounded-2xl p-6">
-                    <div class="flex justify-between mb-2">
-                        <span class="font-semibold text-gray-900 dark:text-white flex items-center">
-                            <i class="fas fa-pen-nib text-accent-violet mr-2"></i>UI/UX Design
-                        </span>
-                        <span class="text-accent-violet font-bold">92%</span>
-                    </div>
-                    <div class="w-full bg-gray-200 dark:bg-dark-700 rounded-full h-2">
-                        <div class="progress-bar gradient-bg h-2 rounded-full" style="width: 92%"></div>
+                    <h3 class="font-serif text-3xl font-bold mb-3">Backend</h3>
+                    <p class="mb-4 leading-relaxed">APIs robustas y arquitecturas escalables que soportan millones de usuarios.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="tag-pill">Node.js</span>
+                        <span class="tag-pill">Python</span>
+                        <span class="tag-pill">PostgreSQL</span>
+                        <span class="tag-pill">GraphQL</span>
                     </div>
                 </div>
-                <div class="glass rounded-2xl p-6">
-                    <div class="flex justify-between mb-2">
-                        <span class="font-semibold text-gray-900 dark:text-white flex items-center">
-                            <i class="fab fa-adobe text-red-500 mr-2"></i>Adobe XD
-                        </span>
-                        <span class="text-accent-violet font-bold">85%</span>
-                    </div>
-                    <div class="w-full bg-gray-200 dark:bg-dark-700 rounded-full h-2">
-                        <div class="progress-bar gradient-bg h-2 rounded-full" style="width: 85%"></div>
-                    </div>
-                </div>
-                <div class="glass rounded-2xl p-6">
-                    <div class="flex justify-between mb-2">
-                        <span class="font-semibold text-gray-900 dark:text-white flex items-center">
-                            <i class="fas fa-palette text-accent-orange mr-2"></i>Branding
-                        </span>
-                        <span class="text-accent-violet font-bold">80%</span>
-                    </div>
-                    <div class="w-full bg-gray-200 dark:bg-dark-700 rounded-full h-2">
-                        <div class="progress-bar gradient-bg h-2 rounded-full" style="width: 80%"></div>
-                    </div>
-                </div>
-            </div>
 
-            <!-- Tools Skills -->
-            <div id="skills-tools" class="skills-content hidden grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-                <div class="glass rounded-2xl p-6">
-                    <div class="flex justify-between mb-2">
-                        <span class="font-semibold text-gray-900 dark:text-white flex items-center">
-                            <i class="fab fa-git-alt text-orange-500 mr-2"></i>Git / GitHub
-                        </span>
-                        <span class="text-accent-violet font-bold">95%</span>
+                <!-- Skill 3 -->
+                <div class="bg-brand-cream dark:bg-brand-black border-brutal shadow-brutal-lg p-8 card-brutal">
+                    <div class="flex items-start justify-between mb-6">
+                        <div class="w-16 h-16 bg-brand-red border-brutal shadow-brutal flex items-center justify-center">
+                            <i class="fas fa-pen-nib text-brand-cream text-2xl"></i>
+                        </div>
+                        <span class="font-mono text-xs font-bold">03</span>
                     </div>
-                    <div class="w-full bg-gray-200 dark:bg-dark-700 rounded-full h-2">
-                        <div class="progress-bar gradient-bg h-2 rounded-full" style="width: 95%"></div>
-                    </div>
-                </div>
-                <div class="glass rounded-2xl p-6">
-                    <div class="flex justify-between mb-2">
-                        <span class="font-semibold text-gray-900 dark:text-white flex items-center">
-                            <i class="fab fa-docker text-blue-500 mr-2"></i>Docker
-                        </span>
-                        <span class="text-accent-violet font-bold">78%</span>
-                    </div>
-                    <div class="w-full bg-gray-200 dark:bg-dark-700 rounded-full h-2">
-                        <div class="progress-bar gradient-bg h-2 rounded-full" style="width: 78%"></div>
+                    <h3 class="font-serif text-3xl font-bold mb-3">UI/UX Design</h3>
+                    <p class="mb-4 leading-relaxed">Diseño centrado en el usuario con foco en accesibilidad y delight.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="tag-pill">Figma</span>
+                        <span class="tag-pill">Prototyping</span>
+                        <span class="tag-pill">Design System</span>
                     </div>
                 </div>
-                <div class="glass rounded-2xl p-6">
-                    <div class="flex justify-between mb-2">
-                        <span class="font-semibold text-gray-900 dark:text-white flex items-center">
-                            <i class="fab fa-aws text-yellow-500 mr-2"></i>AWS / Vercel
-                        </span>
-                        <span class="text-accent-violet font-bold">82%</span>
+
+                <!-- Skill 4 -->
+                <div class="bg-brand-red text-brand-cream border-brutal shadow-brutal-lg p-8 card-brutal transform md:-translate-y-8">
+                    <div class="flex items-start justify-between mb-6">
+                        <div class="w-16 h-16 bg-brand-yellow border-brutal shadow-brutal-yellow flex items-center justify-center">
+                            <i class="fas fa-mobile-alt text-brand-black text-2xl"></i>
+                        </div>
+                        <span class="font-mono text-xs font-bold text-brand-yellow">04</span>
                     </div>
-                    <div class="w-full bg-gray-200 dark:bg-dark-700 rounded-full h-2">
-                        <div class="progress-bar gradient-bg h-2 rounded-full" style="width: 82%"></div>
+                    <h3 class="font-serif text-3xl font-bold mb-3">Mobile</h3>
+                    <p class="mb-4 leading-relaxed">Apps nativas y multiplataforma con experiencias fluidas.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="tag-pill">React Native</span>
+                        <span class="tag-pill">Flutter</span>
+                        <span class="tag-pill">iOS</span>
+                        <span class="tag-pill">Android</span>
                     </div>
                 </div>
-                <div class="glass rounded-2xl p-6">
-                    <div class="flex justify-between mb-2">
-                        <span class="font-semibold text-gray-900 dark:text-white flex items-center">
-                            <i class="fas fa-vial text-green-500 mr-2"></i>Testing (Jest, Cypress)
-                        </span>
-                        <span class="text-accent-violet font-bold">85%</span>
+
+                <!-- Skill 5 -->
+                <div class="bg-brand-cream dark:bg-brand-black border-brutal shadow-brutal-lg p-8 card-brutal">
+                    <div class="flex items-start justify-between mb-6">
+                        <div class="w-16 h-16 bg-brand-black dark:bg-brand-cream border-brutal shadow-brutal flex items-center justify-center">
+                            <i class="fas fa-palette text-brand-cream dark:text-brand-black text-2xl"></i>
+                        </div>
+                        <span class="font-mono text-xs font-bold">05</span>
                     </div>
-                    <div class="w-full bg-gray-200 dark:bg-dark-700 rounded-full h-2">
-                        <div class="progress-bar gradient-bg h-2 rounded-full" style="width: 85%"></div>
+                    <h3 class="font-serif text-3xl font-bold mb-3">Branding</h3>
+                    <p class="mb-4 leading-relaxed">Identidades visuales memorables que cuentan historias únicas.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="tag-pill">Logo</span>
+                        <span class="tag-pill">Identidad</span>
+                        <span class="tag-pill">Guidelines</span>
+                    </div>
+                </div>
+
+                <!-- Skill 6 -->
+                <div class="bg-brand-yellow border-brutal shadow-brutal-lg p-8 card-brutal transform md:translate-y-8">
+                    <div class="flex items-start justify-between mb-6">
+                        <div class="w-16 h-16 bg-brand-black border-brutal shadow-brutal flex items-center justify-center">
+                            <i class="fas fa-rocket text-brand-yellow text-2xl"></i>
+                        </div>
+                        <span class="font-mono text-xs font-bold">06</span>
+                    </div>
+                    <h3 class="font-serif text-3xl font-bold mb-3">Performance</h3>
+                    <p class="mb-4 leading-relaxed">Optimización, SEO técnico y métricas Core Web Vitals al máximo.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="tag-pill">Lighthouse</span>
+                        <span class="tag-pill">SEO</span>
+                        <span class="tag-pill">Analytics</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Proyectos -->
-    <section id="proyectos" class="py-20 bg-white dark:bg-dark-900">
+    <!-- TRABAJOS / PROYECTOS -->
+    <section id="trabajos" class="py-20 md:py-32 border-b-3 border-brutal">
         <div class="container mx-auto px-4">
-            <div class="text-center mb-12">
-                <span class="text-accent-violet font-semibold uppercase tracking-wider text-sm">Mi trabajo</span>
-                <h2 class="text-4xl md:text-5xl font-display font-bold text-gray-900 dark:text-white mt-2 mb-4">
-                    Proyectos <span class="gradient-text">Destacados</span>
-                </h2>
-                <p class="text-gray-600 dark:text-gray-400 text-lg max-w-2xl mx-auto">
-                    Una selección de mis mejores trabajos recientes
-                </p>
+            <div class="flex items-baseline justify-between mb-12 pb-4 border-b-2 border-brand-black dark:border-brand-cream">
+                <div>
+                    <div class="section-number mb-2">[ 04 ] — TRABAJOS</div>
+                    <h2 class="font-serif text-5xl md:text-7xl font-bold">
+                        Proyectos <span class="italic">selectos</span>
+                    </h2>
+                </div>
+                <a href="#" class="hidden md:inline-flex items-center font-mono text-xs font-bold uppercase tracking-widest border-2 border-brand-black dark:border-brand-cream px-4 py-2 hover:bg-brand-yellow transition">
+                    Ver todos <i class="fas fa-arrow-right ml-2"></i>
+                </a>
             </div>
 
-            <!-- Filtros -->
-            <div class="flex flex-wrap justify-center gap-2 mb-12">
-                <button onclick="filterProjects('all')" class="filter-btn active px-6 py-2 rounded-full font-semibold text-sm transition">Todos</button>
-                <button onclick="filterProjects('web')" class="filter-btn px-6 py-2 rounded-full font-semibold text-sm transition glass text-gray-700 dark:text-gray-300">Web</button>
-                <button onclick="filterProjects('mobile')" class="filter-btn px-6 py-2 rounded-full font-semibold text-sm transition glass text-gray-700 dark:text-gray-300">Mobile</button>
-                <button onclick="filterProjects('uiux')" class="filter-btn px-6 py-2 rounded-full font-semibold text-sm transition glass text-gray-700 dark:text-gray-300">UI/UX</button>
-                <button onclick="filterProjects('branding')" class="filter-btn px-6 py-2 rounded-full font-semibold text-sm transition glass text-gray-700 dark:text-gray-300">Branding</button>
+            <!-- Filters -->
+            <div class="flex flex-wrap gap-3 mb-12">
+                <button onclick="filterWorks('all')" class="work-filter active bg-brand-black dark:bg-brand-cream text-brand-cream dark:text-brand-black border-brutal shadow-brutal px-5 py-2 font-mono text-xs font-bold uppercase tracking-wider btn-brutal">Todos</button>
+                <button onclick="filterWorks('web')" class="work-filter bg-brand-cream dark:bg-brand-black border-brutal shadow-brutal px-5 py-2 font-mono text-xs font-bold uppercase tracking-wider btn-brutal">Web</button>
+                <button onclick="filterWorks('app')" class="work-filter bg-brand-cream dark:bg-brand-black border-brutal shadow-brutal px-5 py-2 font-mono text-xs font-bold uppercase tracking-wider btn-brutal">Apps</button>
+                <button onclick="filterWorks('brand')" class="work-filter bg-brand-cream dark:bg-brand-black border-brutal shadow-brutal px-5 py-2 font-mono text-xs font-bold uppercase tracking-wider btn-brutal">Branding</button>
             </div>
 
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6" id="projectsGrid">
-                <!-- Proyectos generados por JS -->
+            <!-- Projects Grid -->
+            <div class="grid md:grid-cols-2 gap-8" id="worksGrid">
+                <!-- Project 1 -->
+                <article class="project-card group cursor-pointer" data-category="web">
+                    <div class="relative bg-brand-yellow border-brutal shadow-brutal-lg p-3 card-brutal">
+                        <div class="overflow-hidden border-2 border-brand-black">
+                            <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=600&fit=crop" 
+                                 alt="Proyecto 1" 
+                                 class="project-image w-full aspect-[4/3] object-cover">
+                        </div>
+                        <!-- Number badge -->
+                        <div class="absolute -top-4 -left-4 w-14 h-14 bg-brand-red text-brand-cream border-brutal shadow-brutal flex items-center justify-center font-serif text-2xl font-bold">
+                            01
+                        </div>
+                    </div>
+                    <div class="mt-6 flex items-start justify-between">
+                        <div>
+                            <h3 class="font-serif text-3xl font-bold mb-2">E-commerce Luxe</h3>
+                            <p class="font-mono text-xs uppercase tracking-widest mb-3">Tienda online · 2026</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="tag-pill">Next.js</span>
+                                <span class="tag-pill">Stripe</span>
+                                <span class="tag-pill">Sanity</span>
+                            </div>
+                        </div>
+                        <div class="w-12 h-12 bg-brand-black text-brand-cream border-brutal shadow-brutal flex items-center justify-center group-hover:bg-brand-red transition-colors">
+                            <i class="fas fa-arrow-up-right-from-square"></i>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Project 2 -->
+                <article class="project-card group cursor-pointer md:mt-16" data-category="app">
+                    <div class="relative bg-brand-red text-brand-cream border-brutal shadow-brutal-lg p-3 card-brutal">
+                        <div class="overflow-hidden border-2 border-brand-black">
+                            <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?w=800&h=600&fit=crop" 
+                                 alt="Proyecto 2" 
+                                 class="project-image w-full aspect-[4/3] object-cover">
+                        </div>
+                        <div class="absolute -top-4 -left-4 w-14 h-14 bg-brand-yellow text-brand-black border-brutal shadow-brutal flex items-center justify-center font-serif text-2xl font-bold">
+                            02
+                        </div>
+                    </div>
+                    <div class="mt-6 flex items-start justify-between">
+                        <div>
+                            <h3 class="font-serif text-3xl font-bold mb-2">Fitness Pro App</h3>
+                            <p class="font-mono text-xs uppercase tracking-widest mb-3">App móvil · 2025</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="tag-pill">React Native</span>
+                                <span class="tag-pill">Firebase</span>
+                            </div>
+                        </div>
+                        <div class="w-12 h-12 bg-brand-black text-brand-cream border-brutal shadow-brutal flex items-center justify-center group-hover:bg-brand-yellow group-hover:text-brand-black transition-colors">
+                            <i class="fas fa-arrow-up-right-from-square"></i>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Project 3 -->
+                <article class="project-card group cursor-pointer" data-category="brand">
+                    <div class="relative bg-brand-black text-brand-cream border-brutal shadow-brutal-lg p-3 card-brutal">
+                        <div class="overflow-hidden border-2 border-brand-cream">
+                            <img src="https://images.unsplash.com/photo-1561070791-2526d30994b8?w=800&h=600&fit=crop" 
+                                 alt="Proyecto 3" 
+                                 class="project-image w-full aspect-[4/3] object-cover">
+                        </div>
+                        <div class="absolute -top-4 -left-4 w-14 h-14 bg-brand-yellow text-brand-black border-brutal shadow-brutal flex items-center justify-center font-serif text-2xl font-bold">
+                            03
+                        </div>
+                    </div>
+                    <div class="mt-6 flex items-start justify-between">
+                        <div>
+                            <h3 class="font-serif text-3xl font-bold mb-2">Luxe Brand Identity</h3>
+                            <p class="font-mono text-xs uppercase tracking-widest mb-3">Branding · 2025</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="tag-pill">Logo</span>
+                                <span class="tag-pill">Guidelines</span>
+                            </div>
+                        </div>
+                        <div class="w-12 h-12 bg-brand-yellow text-brand-black border-brutal shadow-brutal flex items-center justify-center group-hover:bg-brand-red group-hover:text-brand-cream transition-colors">
+                            <i class="fas fa-arrow-up-right-from-square"></i>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Project 4 -->
+                <article class="project-card group cursor-pointer md:mt-16" data-category="web">
+                    <div class="relative bg-brand-cream dark:bg-brand-black border-brutal shadow-brutal-lg p-3 card-brutal">
+                        <div class="overflow-hidden border-2 border-brand-black dark:border-brand-cream">
+                            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop" 
+                                 alt="Proyecto 4" 
+                                 class="project-image w-full aspect-[4/3] object-cover">
+                        </div>
+                        <div class="absolute -top-4 -left-4 w-14 h-14 bg-brand-red text-brand-cream border-brutal shadow-brutal flex items-center justify-center font-serif text-2xl font-bold">
+                            04
+                        </div>
+                    </div>
+                    <div class="mt-6 flex items-start justify-between">
+                        <div>
+                            <h3 class="font-serif text-3xl font-bold mb-2">SaaS Analytics</h3>
+                            <p class="font-mono text-xs uppercase tracking-widest mb-3">Plataforma · 2025</p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="tag-pill">React</span>
+                                <span class="tag-pill">Node.js</span>
+                                <span class="tag-pill">D3.js</span>
+                            </div>
+                        </div>
+                        <div class="w-12 h-12 bg-brand-red text-brand-cream border-brutal shadow-brutal flex items-center justify-center group-hover:bg-brand-yellow group-hover:text-brand-black transition-colors">
+                            <i class="fas fa-arrow-up-right-from-square"></i>
+                        </div>
+                    </div>
+                </article>
             </div>
 
-            <div class="text-center mt-12">
-                <a href="#" class="inline-flex items-center glass text-gray-900 dark:text-white px-8 py-4 rounded-full font-semibold hover:bg-gray-100 dark:hover:bg-dark-700 transition">
-                    Ver todos los proyectos <i class="fas fa-arrow-right ml-2"></i>
+            <div class="text-center mt-16">
+                <a href="#" class="inline-flex items-center bg-brand-yellow border-brutal shadow-brutal-lg px-8 py-4 font-mono text-sm font-bold uppercase tracking-wider btn-brutal">
+                    <span>Cargar más proyectos</span>
+                    <i class="fas fa-plus ml-3"></i>
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- Experiencia -->
-    <section id="experiencia" class="py-20 bg-gray-50 dark:bg-dark-800">
+    <!-- PROCESO / TIMELINE -->
+    <section id="proceso" class="py-20 md:py-32 bg-brand-black text-brand-cream border-b-3 border-brutal">
         <div class="container mx-auto px-4">
-            <div class="text-center mb-12">
-                <span class="text-accent-violet font-semibold uppercase tracking-wider text-sm">Mi trayectoria</span>
-                <h2 class="text-4xl md:text-5xl font-display font-bold text-gray-900 dark:text-white mt-2 mb-4">
-                    Experiencia <span class="gradient-text">Profesional</span>
-                </h2>
+            <div class="flex items-baseline justify-between mb-12 pb-4 border-b-2 border-brand-cream">
+                <div>
+                    <div class="section-number mb-2 text-brand-yellow">[ 05 ] — PROCESO</div>
+                    <h2 class="font-serif text-5xl md:text-7xl font-bold">
+                        Cómo <span class="italic text-brand-yellow">trabajo</span>
+                    </h2>
+                </div>
             </div>
 
-            <div class="max-w-4xl mx-auto relative">
-                <!-- Línea central -->
-                <div class="absolute left-8 md:left-1/2 top-0 bottom-0 w-1 timeline-line md:-translate-x-1/2"></div>
-
-                <!-- Item 1 -->
-                <div class="relative flex items-center mb-12 md:justify-end">
-                    <div class="ml-16 md:ml-0 md:w-5/12 glass rounded-2xl p-6 hover-lift">
-                        <span class="text-xs text-accent-violet font-semibold">2023 - PRESENTE</span>
-                        <h3 class="text-xl font-display font-bold text-gray-900 dark:text-white mt-1">Senior Frontend Developer</h3>
-                        <p class="text-accent-cyan font-semibold text-sm mb-3">TechCorp Global</p>
-                        <p class="text-gray-600 dark:text-gray-400 text-sm">Liderando el desarrollo de productos web con React y Next.js. Implementando arquitecturas escalables y mejores prácticas.</p>
-                    </div>
-                    <div class="absolute left-8 md:left-1/2 w-4 h-4 gradient-bg rounded-full md:-translate-x-1/2 shadow-lg shadow-accent-violet/50"></div>
+            <div class="grid md:grid-cols-4 gap-6">
+                <!-- Step 1 -->
+                <div class="relative bg-brand-cream text-brand-black border-brutal shadow-brutal-yellow p-6 card-brutal">
+                    <div class="font-serif text-6xl font-bold text-brand-red mb-4">01</div>
+                    <h3 class="font-serif text-2xl font-bold mb-2">Descubrir</h3>
+                    <p class="text-sm leading-relaxed">Entiendo tu visión, objetivos y usuarios. Investigamos juntos.</p>
+                    <i class="fas fa-magnifying-glass absolute top-6 right-6 text-2xl text-brand-red"></i>
                 </div>
 
-                <!-- Item 2 -->
-                <div class="relative flex items-center mb-12 md:justify-start">
-                    <div class="ml-16 md:ml-0 md:w-5/12 glass rounded-2xl p-6 hover-lift">
-                        <span class="text-xs text-accent-violet font-semibold">2021 - 2023</span>
-                        <h3 class="text-xl font-display font-bold text-gray-900 dark:text-white mt-1">Full Stack Developer</h3>
-                        <p class="text-accent-cyan font-semibold text-sm mb-3">StartupXYZ</p>
-                        <p class="text-gray-600 dark:text-gray-400 text-sm">Desarrollo de aplicaciones web completas con Node.js y React. Diseño de APIs RESTful y bases de datos.</p>
-                    </div>
-                    <div class="absolute left-8 md:left-1/2 w-4 h-4 gradient-bg rounded-full md:-translate-x-1/2 shadow-lg shadow-accent-violet/50"></div>
+                <!-- Step 2 -->
+                <div class="relative bg-brand-yellow text-brand-black border-brutal shadow-brutal p-6 card-brutal md:mt-8">
+                    <div class="font-serif text-6xl font-bold text-brand-red mb-4">02</div>
+                    <h3 class="font-serif text-2xl font-bold mb-2">Diseñar</h3>
+                    <p class="text-sm leading-relaxed">Wireframes, prototipos y diseño visual. Iteramos hasta que brille.</p>
+                    <i class="fas fa-pen-ruler absolute top-6 right-6 text-2xl text-brand-red"></i>
                 </div>
 
-                <!-- Item 3 -->
-                <div class="relative flex items-center mb-12 md:justify-end">
-                    <div class="ml-16 md:ml-0 md:w-5/12 glass rounded-2xl p-6 hover-lift">
-                        <span class="text-xs text-accent-violet font-semibold">2020 - 2021</span>
-                        <h3 class="text-xl font-display font-bold text-gray-900 dark:text-white mt-1">UI/UX Designer</h3>
-                        <p class="text-accent-cyan font-semibold text-sm mb-3">DesignStudio Pro</p>
-                        <p class="text-gray-600 dark:text-gray-400 text-sm">Diseño de interfaces de usuario y experiencias para aplicaciones móviles y web. Investigación de usuarios y prototipado.</p>
-                    </div>
-                    <div class="absolute left-8 md:left-1/2 w-4 h-4 gradient-bg rounded-full md:-translate-x-1/2 shadow-lg shadow-accent-violet/50"></div>
+                <!-- Step 3 -->
+                <div class="relative bg-brand-red text-brand-cream border-brutal shadow-brutal-yellow p-6 card-brutal">
+                    <div class="font-serif text-6xl font-bold text-brand-yellow mb-4">03</div>
+                    <h3 class="font-serif text-2xl font-bold mb-2">Desarrollar</h3>
+                    <p class="text-sm leading-relaxed">Código limpio, escalable y optimizado. Pruebas rigurosas.</p>
+                    <i class="fas fa-code absolute top-6 right-6 text-2xl text-brand-yellow"></i>
                 </div>
 
-                <!-- Item 4 -->
-                <div class="relative flex items-center md:justify-start">
-                    <div class="ml-16 md:ml-0 md:w-5/12 glass rounded-2xl p-6 hover-lift">
-                        <span class="text-xs text-accent-violet font-semibold">2019 - 2020</span>
-                        <h3 class="text-xl font-display font-bold text-gray-900 dark:text-white mt-1">Junior Developer</h3>
-                        <p class="text-accent-cyan font-semibold text-sm mb-3">WebAgency</p>
-                        <p class="text-gray-600 dark:text-gray-400 text-sm">Desarrollo frontend con HTML, CSS y JavaScript. Primeros pasos con React y frameworks modernos.</p>
-                    </div>
-                    <div class="absolute left-8 md:left-1/2 w-4 h-4 gradient-bg rounded-full md:-translate-x-1/2 shadow-lg shadow-accent-violet/50"></div>
+                <!-- Step 4 -->
+                <div class="relative bg-brand-cream text-brand-black border-brutal shadow-brutal p-6 card-brutal md:mt-8">
+                    <div class="font-serif text-6xl font-bold text-brand-red mb-4">04</div>
+                    <h3 class="font-serif text-2xl font-bold mb-2">Lanzar</h3>
+                    <p class="text-sm leading-relaxed">Deploy, monitoreo y soporte continuo. Tu éxito es mi éxito.</p>
+                    <i class="fas fa-rocket absolute top-6 right-6 text-2xl text-brand-red"></i>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Testimonios -->
-    <section id="testimonios" class="py-20 bg-white dark:bg-dark-900">
+    <!-- TESTIMONIOS -->
+    <section class="py-20 md:py-32 bg-brand-cream border-b-3 border-brutal">
         <div class="container mx-auto px-4">
-            <div class="text-center mb-12">
-                <span class="text-accent-violet font-semibold uppercase tracking-wider text-sm">Testimonios</span>
-                <h2 class="text-4xl md:text-5xl font-display font-bold text-gray-900 dark:text-white mt-2 mb-4">
-                    Lo que dicen mis <span class="gradient-text">clientes</span>
-                </h2>
+            <div class="flex items-baseline justify-between mb-12 pb-4 border-b-2 border-brand-black">
+                <div>
+                    <div class="section-number mb-2">[ 06 ] — TESTIMONIOS</div>
+                    <h2 class="font-serif text-5xl md:text-7xl font-bold">
+                        Lo que <span class="italic">dicen</span>
+                    </h2>
+                </div>
             </div>
 
-            <div class="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
-                <div class="card-hover glass rounded-2xl p-8">
-                    <div class="flex text-accent-orange mb-4">
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- Testimonial 1 -->
+                <div class="bg-brand-yellow border-brutal shadow-brutal-lg p-8 card-brutal relative">
+                    <i class="fas fa-quote-left text-5xl text-brand-red absolute top-4 right-4 opacity-30"></i>
+                    <div class="flex text-brand-red mb-4">
                         <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
                     </div>
-                    <p class="text-gray-700 dark:text-gray-300 mb-6 italic leading-relaxed">
-                        "Alex transformó completamente nuestra plataforma. Su atención al detalle y capacidad técnica son excepcionales. Superó todas nuestras expectativas."
+                    <p class="font-serif text-xl italic leading-relaxed mb-6">
+                        "Mora transformó nuestra visión en una realidad digital increíble. Su atención al detalle es obsesiva — en el mejor sentido."
                     </p>
-                    <div class="flex items-center">
-                        <img src="https://i.pravatar.cc/50?img=12" class="w-12 h-12 rounded-full mr-4" alt="Cliente">
+                    <div class="flex items-center pt-4 border-t-2 border-brand-black">
+                        <img src="https://i.pravatar.cc/60?img=12" class="w-12 h-12 border-brutal mr-4" alt="Cliente">
                         <div>
-                            <div class="font-bold text-gray-900 dark:text-white">María González</div>
-                            <div class="text-sm text-gray-500">CEO, TechStart</div>
+                            <div class="font-bold">María González</div>
+                            <div class="font-mono text-xs uppercase tracking-widest">CEO · TechStart</div>
                         </div>
                     </div>
                 </div>
-                <div class="card-hover glass rounded-2xl p-8">
-                    <div class="flex text-accent-orange mb-4">
+
+                <!-- Testimonial 2 -->
+                <div class="bg-brand-red text-brand-cream border-brutal shadow-brutal-lg p-8 card-brutal relative md:translate-y-8">
+                    <i class="fas fa-quote-left text-5xl text-brand-yellow absolute top-4 right-4 opacity-30"></i>
+                    <div class="flex text-brand-yellow mb-4">
                         <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
                     </div>
-                    <p class="text-gray-700 dark:text-gray-300 mb-6 italic leading-relaxed">
-                        "Trabajar con Alex fue una experiencia increíble. Entendió nuestra visión desde el primer momento y la ejecuyó a la perfección. 100% recomendado."
+                    <p class="font-serif text-xl italic leading-relaxed mb-6">
+                        "Trabajar con Studio Mora fue una experiencia transformadora. Entregó más de lo que prometió, en menos tiempo del esperado."
                     </p>
-                    <div class="flex items-center">
-                        <img src="https://i.pravatar.cc/50?img=33" class="w-12 h-12 rounded-full mr-4" alt="Cliente">
+                    <div class="flex items-center pt-4 border-t-2 border-brand-cream">
+                        <img src="https://i.pravatar.cc/60?img=33" class="w-12 h-12 border-brutal mr-4" alt="Cliente">
                         <div>
-                            <div class="font-bold text-gray-900 dark:text-white">Carlos Ramírez</div>
-                            <div class="text-sm text-gray-500">Fundador, InnovaLab</div>
+                            <div class="font-bold">Carlos Ramírez</div>
+                            <div class="font-mono text-xs uppercase tracking-widest">Founder · InnovaLab</div>
                         </div>
                     </div>
                 </div>
-                <div class="card-hover glass rounded-2xl p-8">
-                    <div class="flex text-accent-orange mb-4">
+
+                <!-- Testimonial 3 -->
+                <div class="bg-brand-black text-brand-cream border-brutal shadow-brutal-yellow p-8 card-brutal relative">
+                    <i class="fas fa-quote-left text-5xl text-brand-yellow absolute top-4 right-4 opacity-30"></i>
+                    <div class="flex text-brand-yellow mb-4">
                         <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
                     </div>
-                    <p class="text-gray-700 dark:text-gray-300 mb-6 italic leading-relaxed">
-                        "El diseño y desarrollo de nuestra app móvil fue impecable. Alex combina creatividad con profesionalismo. Ya estamos planeando el próximo proyecto juntos."
+                    <p class="font-serif text-xl italic leading-relaxed mb-6">
+                        "La app móvil que desarrolló superó todas nuestras métricas. Código limpio, diseño hermoso, comunicación impecable."
                     </p>
-                    <div class="flex items-center">
-                        <img src="https://i.pravatar.cc/50?img=47" class="w-12 h-12 rounded-full mr-4" alt="Cliente">
+                    <div class="flex items-center pt-4 border-t-2 border-brand-cream">
+                        <img src="https://i.pravatar.cc/60?img=47" class="w-12 h-12 border-brutal mr-4" alt="Cliente">
                         <div>
-                            <div class="font-bold text-gray-900 dark:text-white">Ana Martínez</div>
-                            <div class="text-sm text-gray-500">Product Manager, AppFlow</div>
+                            <div class="font-bold">Ana Martínez</div>
+                            <div class="font-mono text-xs uppercase tracking-widest">PM · AppFlow</div>
                         </div>
                     </div>
                 </div>
@@ -843,332 +915,195 @@
         </div>
     </section>
 
-    <!-- Contacto -->
-    <section id="contacto" class="py-20 bg-gray-50 dark:bg-dark-800 relative overflow-hidden">
-        <div class="absolute top-0 right-0 w-96 h-96 bg-accent-violet/10 rounded-full blur-3xl"></div>
-        <div class="absolute bottom-0 left-0 w-96 h-96 bg-accent-cyan/10 rounded-full blur-3xl"></div>
-
+    <!-- CONTACTO -->
+    <section id="contacto" class="py-20 md:py-32 bg-brand-yellow border-b-3 border-brutal relative overflow-hidden">
         <div class="container mx-auto px-4 relative z-10">
             <div class="text-center mb-12">
-                <span class="text-accent-violet font-semibold uppercase tracking-wider text-sm">Contacto</span>
-                <h2 class="text-4xl md:text-5xl font-display font-bold text-gray-900 dark:text-white mt-2 mb-4">
-                    ¿Tienes un <span class="gradient-text">proyecto</span>?
+                <div class="section-number mb-2">[ 07 ] — CONTACTO</div>
+                <h2 class="font-serif text-6xl md:text-8xl font-bold mb-4">
+                    ¿Hacemos algo <span class="italic">épico</span>?
                 </h2>
-                <p class="text-gray-600 dark:text-gray-400 text-lg max-w-2xl mx-auto">
-                    Me encantaría saber de ti. Completa el formulario y te responderé en menos de 24 horas.
+                <p class="text-xl max-w-2xl mx-auto">
+                    Cuéntame sobre tu proyecto. Respondo en menos de 24 horas.
                 </p>
             </div>
 
-            <div class="grid lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
-                <!-- Info de contacto -->
-                <div class="space-y-6">
-                    <div class="glass rounded-2xl p-6 flex items-start space-x-4 hover-lift">
-                        <div class="w-14 h-14 gradient-bg rounded-xl flex items-center justify-center flex-shrink-0">
-                            <i class="fas fa-envelope text-white text-xl"></i>
+            <div class="grid lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
+                <!-- Contact info -->
+                <div class="space-y-4">
+                    <a href="mailto:hola@studiomora.dev" class="block bg-brand-cream dark:bg-brand-black border-brutal shadow-brutal-lg p-6 card-brutal group">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-4">
+                                <div class="w-14 h-14 bg-brand-red text-brand-cream border-brutal flex items-center justify-center">
+                                    <i class="fas fa-envelope text-xl"></i>
+                                </div>
+                                <div>
+                                    <div class="font-mono text-xs uppercase tracking-widest mb-1">Email</div>
+                                    <div class="font-serif text-2xl font-bold">hola@studiomora.dev</div>
+                                </div>
+                            </div>
+                            <i class="fas fa-arrow-right text-2xl group-hover:translate-x-2 transition-transform"></i>
                         </div>
-                        <div>
-                            <h3 class="font-bold text-gray-900 dark:text-white text-lg mb-1">Email</h3>
-                            <p class="text-gray-600 dark:text-gray-400">hola@alexrivera.dev</p>
-                            <p class="text-gray-600 dark:text-gray-400">contacto@alexrivera.dev</p>
-                        </div>
-                    </div>
+                    </a>
 
-                    <div class="glass rounded-2xl p-6 flex items-start space-x-4 hover-lift">
-                        <div class="w-14 h-14 gradient-bg rounded-xl flex items-center justify-center flex-shrink-0">
-                            <i class="fas fa-phone text-white text-xl"></i>
+                    <a href="tel:+34612345678" class="block bg-brand-black text-brand-cream border-brutal shadow-brutal-lg p-6 card-brutal group">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-4">
+                                <div class="w-14 h-14 bg-brand-yellow text-brand-black border-brutal flex items-center justify-center">
+                                    <i class="fas fa-phone text-xl"></i>
+                                </div>
+                                <div>
+                                    <div class="font-mono text-xs uppercase tracking-widest mb-1 text-brand-yellow">Teléfono</div>
+                                    <div class="font-serif text-2xl font-bold">+34 612 345 678</div>
+                                </div>
+                            </div>
+                            <i class="fas fa-arrow-right text-2xl text-brand-yellow group-hover:translate-x-2 transition-transform"></i>
                         </div>
-                        <div>
-                            <h3 class="font-bold text-gray-900 dark:text-white text-lg mb-1">Teléfono</h3>
-                            <p class="text-gray-600 dark:text-gray-400">+34 612 345 678</p>
-                            <p class="text-gray-600 dark:text-gray-400">Lun - Vie, 9:00 - 18:00</p>
-                        </div>
-                    </div>
+                    </a>
 
-                    <div class="glass rounded-2xl p-6 flex items-start space-x-4 hover-lift">
-                        <div class="w-14 h-14 gradient-bg rounded-xl flex items-center justify-center flex-shrink-0">
-                            <i class="fas fa-map-marker-alt text-white text-xl"></i>
+                    <a href="https://wa.me/34612345678" class="block bg-brand-red text-brand-cream border-brutal shadow-brutal-lg p-6 card-brutal group">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-4">
+                                <div class="w-14 h-14 bg-brand-yellow text-brand-black border-brutal flex items-center justify-center">
+                                    <i class="fab fa-whatsapp text-xl"></i>
+                                </div>
+                                <div>
+                                    <div class="font-mono text-xs uppercase tracking-widest mb-1 text-brand-yellow">WhatsApp</div>
+                                    <div class="font-serif text-2xl font-bold">Escríbeme directo</div>
+                                </div>
+                            </div>
+                            <i class="fas fa-arrow-right text-2xl text-brand-yellow group-hover:translate-x-2 transition-transform"></i>
                         </div>
-                        <div>
-                            <h3 class="font-bold text-gray-900 dark:text-white text-lg mb-1">Ubicación</h3>
-                            <p class="text-gray-600 dark:text-gray-400">Madrid, España</p>
-                            <p class="text-gray-600 dark:text-gray-400">Disponible remoto worldwide</p>
-                        </div>
-                    </div>
+                    </a>
 
-                    <!-- Redes sociales -->
-                    <div class="glass rounded-2xl p-6">
-                        <h3 class="font-bold text-gray-900 dark:text-white text-lg mb-4">Sígueme</h3>
-                        <div class="flex space-x-3">
-                            <a href="#" class="w-12 h-12 glass rounded-xl flex items-center justify-center hover:gradient-bg hover:text-white transition text-gray-700 dark:text-gray-300">
+                    <!-- Social -->
+                    <div class="bg-brand-cream dark:bg-brand-black border-brutal shadow-brutal-lg p-6">
+                        <div class="font-mono text-xs uppercase tracking-widest mb-4">Sígueme</div>
+                        <div class="flex flex-wrap gap-3">
+                            <a href="#" class="w-12 h-12 bg-brand-yellow border-brutal shadow-brutal flex items-center justify-center hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all">
                                 <i class="fab fa-github text-xl"></i>
                             </a>
-                            <a href="#" class="w-12 h-12 glass rounded-xl flex items-center justify-center hover:gradient-bg hover:text-white transition text-gray-700 dark:text-gray-300">
+                            <a href="#" class="w-12 h-12 bg-brand-red text-brand-cream border-brutal shadow-brutal flex items-center justify-center hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all">
                                 <i class="fab fa-linkedin-in text-xl"></i>
                             </a>
-                            <a href="#" class="w-12 h-12 glass rounded-xl flex items-center justify-center hover:gradient-bg hover:text-white transition text-gray-700 dark:text-gray-300">
+                            <a href="#" class="w-12 h-12 bg-brand-black text-brand-cream border-brutal shadow-brutal flex items-center justify-center hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all">
                                 <i class="fab fa-twitter text-xl"></i>
                             </a>
-                            <a href="#" class="w-12 h-12 glass rounded-xl flex items-center justify-center hover:gradient-bg hover:text-white transition text-gray-700 dark:text-gray-300">
+                            <a href="#" class="w-12 h-12 bg-brand-yellow border-brutal shadow-brutal flex items-center justify-center hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all">
                                 <i class="fab fa-instagram text-xl"></i>
+                            </a>
+                            <a href="#" class="w-12 h-12 bg-brand-red text-brand-cream border-brutal shadow-brutal flex items-center justify-center hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all">
+                                <i class="fab fa-dribbble text-xl"></i>
                             </a>
                         </div>
                     </div>
                 </div>
 
-                <!-- Formulario -->
-                <form class="glass rounded-2xl p-8 space-y-4" onsubmit="handleSubmit(event)">
-                    <div class="grid md:grid-cols-2 gap-4">
+                <!-- Form -->
+                <form class="bg-brand-cream dark:bg-brand-black border-brutal shadow-brutal-xl p-8" onsubmit="handleSubmit(event)">
+                    <div class="space-y-4">
                         <div>
-                            <label class="block text-sm font-semibold text-gray-900 dark:text-white mb-2">Nombre</label>
+                            <label class="block font-mono text-xs uppercase tracking-widest mb-2 font-bold">Nombre *</label>
                             <input type="text" required placeholder="Tu nombre" 
-                                   class="w-full px-4 py-3 bg-white dark:bg-dark-700 border border-gray-200 dark:border-dark-600 rounded-xl text-gray-900 dark:text-white placeholder-gray-500 focus:outline-none focus:border-accent-violet transition">
+                                   class="w-full px-4 py-3 bg-brand-yellow border-brutal shadow-brutal font-serif text-lg focus:outline-none focus:translate-x-1 focus:translate-y-1 focus:shadow-none transition-all">
                         </div>
                         <div>
-                            <label class="block text-sm font-semibold text-gray-900 dark:text-white mb-2">Email</label>
+                            <label class="block font-mono text-xs uppercase tracking-widest mb-2 font-bold">Email *</label>
                             <input type="email" required placeholder="tu@email.com" 
-                                   class="w-full px-4 py-3 bg-white dark:bg-dark-700 border border-gray-200 dark:border-dark-600 rounded-xl text-gray-900 dark:text-white placeholder-gray-500 focus:outline-none focus:border-accent-violet transition">
+                                   class="w-full px-4 py-3 bg-brand-cream dark:bg-brand-black border-brutal shadow-brutal font-serif text-lg focus:outline-none focus:translate-x-1 focus:translate-y-1 focus:shadow-none transition-all">
                         </div>
+                        <div>
+                            <label class="block font-mono text-xs uppercase tracking-widest mb-2 font-bold">Tipo de proyecto</label>
+                            <select class="w-full px-4 py-3 bg-brand-yellow border-brutal shadow-brutal font-serif text-lg focus:outline-none focus:translate-x-1 focus:translate-y-1 focus:shadow-none transition-all">
+                                <option>Desarrollo Web</option>
+                                <option>App Móvil</option>
+                                <option>Diseño UI/UX</option>
+                                <option>Branding</option>
+                                <option>Consultoría</option>
+                                <option>Otro</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block font-mono text-xs uppercase tracking-widest mb-2 font-bold">Presupuesto</label>
+                            <select class="w-full px-4 py-3 bg-brand-cream dark:bg-brand-black border-brutal shadow-brutal font-serif text-lg focus:outline-none focus:translate-x-1 focus:translate-y-1 focus:shadow-none transition-all">
+                                <option>€1K - €5K</option>
+                                <option>€5K - €15K</option>
+                                <option>€15K - €50K</option>
+                                <option>€50K+</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block font-mono text-xs uppercase tracking-widest mb-2 font-bold">Mensaje *</label>
+                            <textarea required rows="4" placeholder="Cuéntame sobre tu proyecto..." 
+                                      class="w-full px-4 py-3 bg-brand-yellow border-brutal shadow-brutal font-serif text-lg focus:outline-none focus:translate-x-1 focus:translate-y-1 focus:shadow-none transition-all resize-none"></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-brand-red text-brand-cream border-brutal shadow-brutal-lg py-5 font-mono text-sm font-bold uppercase tracking-widest btn-brutal flex items-center justify-center">
+                            <span>Enviar mensaje</span>
+                            <i class="fas fa-paper-plane ml-3"></i>
+                        </button>
                     </div>
-                    <div>
-                        <label class="block text-sm font-semibold text-gray-900 dark:text-white mb-2">Asunto</label>
-                        <input type="text" required placeholder="¿En qué puedo ayudarte?" 
-                               class="w-full px-4 py-3 bg-white dark:bg-dark-700 border border-gray-200 dark:border-dark-600 rounded-xl text-gray-900 dark:text-white placeholder-gray-500 focus:outline-none focus:border-accent-violet transition">
-                    </div>
-                    <div>
-                        <label class="block text-sm font-semibold text-gray-900 dark:text-white mb-2">Tipo de proyecto</label>
-                        <select class="w-full px-4 py-3 bg-white dark:bg-dark-700 border border-gray-200 dark:border-dark-600 rounded-xl text-gray-900 dark:text-white focus:outline-none focus:border-accent-violet transition">
-                            <option>Desarrollo Web</option>
-                            <option>Diseño UI/UX</option>
-                            <option>App Móvil</option>
-                            <option>Branding</option>
-                            <option>Consultoría</option>
-                            <option>Otro</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label class="block text-sm font-semibold text-gray-900 dark:text-white mb-2">Mensaje</label>
-                        <textarea required rows="4" placeholder="Cuéntame sobre tu proyecto..." 
-                                  class="w-full px-4 py-3 bg-white dark:bg-dark-700 border border-gray-200 dark:border-dark-600 rounded-xl text-gray-900 dark:text-white placeholder-gray-500 focus:outline-none focus:border-accent-violet transition resize-none"></textarea>
-                    </div>
-                    <button type="submit" class="w-full gradient-bg text-white py-4 rounded-xl font-semibold hover:opacity-90 transition shadow-lg">
-                        <i class="fas fa-paper-plane mr-2"></i>Enviar mensaje
-                    </button>
                 </form>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="bg-dark-900 dark:bg-dark-900 text-white pt-16 pb-8 border-t border-gray-200 dark:border-dark-700">
+    <!-- FOOTER -->
+    <footer class="bg-brand-black text-brand-cream py-12 border-t-3 border-brutal">
         <div class="container mx-auto px-4">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
-                <div>
-                    <div class="flex items-center space-x-2 mb-4">
-                        <div class="w-10 h-10 gradient-bg rounded-xl flex items-center justify-center font-display font-bold text-white text-lg">
-                            AR
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <div class="md:col-span-2">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div class="w-12 h-12 bg-brand-yellow border-3 border-brand-cream flex items-center justify-center font-serif font-bold text-2xl">
+                            M
                         </div>
-                        <span class="font-display font-bold text-lg">
-                            Alex<span class="gradient-text">Rivera</span>
-                        </span>
+                        <div>
+                            <div class="font-serif text-2xl font-bold leading-none">STUDIO MORA</div>
+                            <div class="font-mono text-xs tracking-widest text-brand-yellow">CREATIVE DEVELOPER</div>
+                        </div>
                     </div>
-                    <p class="text-sm text-gray-400 mb-4">
-                        Desarrollador creativo y diseñador UI/UX. Transformando ideas en experiencias digitales memorables.
+                    <p class="font-serif italic text-lg mb-4 max-w-md">
+                        "Construyendo experiencias digitales audaces desde Madrid para el mundo."
                     </p>
-                    <div class="flex space-x-3">
-                        <a href="#" class="w-10 h-10 glass rounded-full flex items-center justify-center hover:gradient-bg transition">
-                            <i class="fab fa-github"></i>
-                        </a>
-                        <a href="#" class="w-10 h-10 glass rounded-full flex items-center justify-center hover:gradient-bg transition">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                        <a href="#" class="w-10 h-10 glass rounded-full flex items-center justify-center hover:gradient-bg transition">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                        <a href="#" class="w-10 h-10 glass rounded-full flex items-center justify-center hover:gradient-bg transition">
-                            <i class="fab fa-dribbble"></i>
-                        </a>
-                    </div>
                 </div>
                 <div>
-                    <h3 class="font-display font-bold mb-4 gradient-text">Navegación</h3>
-                    <ul class="space-y-2 text-sm text-gray-400">
-                        <li><a href="#inicio" class="hover:text-accent-violet transition">Inicio</a></li>
-                        <li><a href="#sobre-mi" class="hover:text-accent-violet transition">Sobre mí</a></li>
-                        <li><a href="#proyectos" class="hover:text-accent-violet transition">Proyectos</a></li>
-                        <li><a href="#experiencia" class="hover:text-accent-violet transition">Experiencia</a></li>
-                        <li><a href="#contacto" class="hover:text-accent-violet transition">Contacto</a></li>
+                    <div class="font-mono text-xs uppercase tracking-widest text-brand-yellow mb-4">Navegación</div>
+                    <ul class="space-y-2">
+                        <li><a href="#inicio" class="hover:text-brand-yellow transition">→ Inicio</a></li>
+                        <li><a href="#sobre-mi" class="hover:text-brand-yellow transition">→ Sobre mí</a></li>
+                        <li><a href="#trabajos" class="hover:text-brand-yellow transition">→ Trabajos</a></li>
+                        <li><a href="#contacto" class="hover:text-brand-yellow transition">→ Contacto</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h3 class="font-display font-bold mb-4 gradient-text">Servicios</h3>
-                    <ul class="space-y-2 text-sm text-gray-400">
-                        <li><a href="#" class="hover:text-accent-violet transition">Desarrollo Web</a></li>
-                        <li><a href="#" class="hover:text-accent-violet transition">Diseño UI/UX</a></li>
-                        <li><a href="#" class="hover:text-accent-violet transition">Apps Móviles</a></li>
-                        <li><a href="#" class="hover:text-accent-violet transition">Branding</a></li>
-                        <li><a href="#" class="hover:text-accent-violet transition">Consultoría</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h3 class="font-display font-bold mb-4 gradient-text">Contacto</h3>
-                    <ul class="space-y-3 text-sm text-gray-400">
-                        <li class="flex items-start">
-                            <i class="fas fa-envelope mt-1 mr-3 text-accent-violet"></i>
-                            <span>hola@alexrivera.dev</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-phone mr-3 text-accent-violet"></i>
-                            <span>+34 612 345 678</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-map-marker-alt mr-3 text-accent-violet"></i>
-                            <span>Madrid, España</span>
-                        </li>
+                    <div class="font-mono text-xs uppercase tracking-widest text-brand-yellow mb-4">Contacto</div>
+                    <ul class="space-y-2">
+                        <li>hola@studiomora.dev</li>
+                        <li>+34 612 345 678</li>
+                        <li>Madrid, España</li>
                     </ul>
                 </div>
             </div>
-            <div class="border-t border-dark-700 pt-8 flex flex-col md:flex-row justify-between items-center">
-                <p class="text-sm text-gray-500">© 2026 Alex Rivera. Todos los derechos reservados.</p>
-                <p class="text-sm text-gray-500 mt-4 md:mt-0">
-                    Hecho con <i class="fas fa-heart text-accent-pink"></i> y mucho <span class="gradient-text font-semibold">café</span>
+            <div class="border-t-2 border-brand-cream/20 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="font-mono text-xs uppercase tracking-widest">© 2026 Studio Mora · Todos los derechos reservados</p>
+                <p class="font-serif italic mt-4 md:mt-0">
+                    Hecho con <span class="text-brand-red">♥</span> y mucho <span class="text-brand-yellow">café</span>
                 </p>
             </div>
         </div>
     </footer>
 
-    <!-- Botón WhatsApp -->
-    <a href="https://wa.me/34612345678?text=Hola%20Alex,%20me%20interesa%20tu%20trabajo" target="_blank" 
-       class="fixed bottom-6 right-6 w-14 h-14 bg-green-500 hover:bg-green-600 rounded-full flex items-center justify-center shadow-lg hover:shadow-2xl transition z-40">
-        <i class="fab fa-whatsapp text-white text-3xl"></i>
+    <!-- WhatsApp Float -->
+    <a href="https://wa.me/34612345678" target="_blank" 
+       class="fixed bottom-6 right-6 w-14 h-14 bg-brand-green border-brutal shadow-brutal flex items-center justify-center hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all z-30">
+        <i class="fab fa-whatsapp text-brand-black text-3xl"></i>
     </a>
 
-    <!-- Botón Scroll to top -->
-    <button id="scrollTop" class="fixed bottom-6 left-6 w-14 h-14 gradient-bg rounded-full flex items-center justify-center shadow-lg hover:shadow-2xl transition z-40 opacity-0 invisible">
-        <i class="fas fa-arrow-up text-white text-xl"></i>
+    <!-- Scroll Top -->
+    <button id="scrollTop" class="fixed bottom-6 left-6 w-14 h-14 bg-brand-red text-brand-cream border-brutal shadow-brutal flex items-center justify-center hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all z-30 opacity-0 invisible">
+        <i class="fas fa-arrow-up text-xl"></i>
     </button>
 
     <script>
-        // Cursor personalizado
-        const cursor = document.getElementById('cursor');
-        document.addEventListener('mousemove', (e) => {
-            cursor.style.left = e.clientX + 'px';
-            cursor.style.top = e.clientY + 'px';
-        });
-        document.querySelectorAll('a, button').forEach(el => {
-            el.addEventListener('mouseenter', () => cursor.style.transform = 'translate(-50%, -50%) scale(1.5)');
-            el.addEventListener('mouseleave', () => cursor.style.transform = 'translate(-50%, -50%) scale(1)');
-        });
-
-        // Typewriter effect
-        const texts = ['Creative Developer', 'UI/UX Designer', 'Problem Solver', 'Tech Enthusiast'];
-        let textIndex = 0;
-        let charIndex = 0;
-        let isDeleting = false;
-        const typewriter = document.getElementById('typewriter');
-
-        function type() {
-            const current = texts[textIndex];
-            if (isDeleting) {
-                typewriter.textContent = current.substring(0, charIndex - 1);
-                charIndex--;
-            } else {
-                typewriter.textContent = current.substring(0, charIndex + 1);
-                charIndex++;
-            }
-
-            if (!isDeleting && charIndex === current.length) {
-                setTimeout(() => isDeleting = true, 2000);
-            } else if (isDeleting && charIndex === 0) {
-                isDeleting = false;
-                textIndex = (textIndex + 1) % texts.length;
-            }
-
-            const speed = isDeleting ? 50 : 100;
-            setTimeout(type, speed);
-        }
-        type();
-
-        // Proyectos
-        const projects = [
-            { id: 1, title: 'E-commerce Premium', category: 'web', tags: ['Next.js', 'Stripe'], image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=500&fit=crop', color: 'from-violet-500 to-purple-600' },
-            { id: 2, title: 'App Fitness Pro', category: 'mobile', tags: ['React Native', 'Firebase'], image: 'https://images.unsplash.com/photo-1551650975-87deedd944c3?w=600&h=500&fit=crop', color: 'from-cyan-500 to-blue-600' },
-            { id: 3, title: 'Dashboard Analytics', category: 'uiux', tags: ['Figma', 'Design System'], image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=500&fit=crop', color: 'from-pink-500 to-rose-600' },
-            { id: 4, title: 'Brand Identity Luxe', category: 'branding', tags: ['Branding', 'Logo'], image: 'https://images.unsplash.com/photo-1561070791-2526d30994b8?w=600&h=500&fit=crop', color: 'from-orange-500 to-red-600' },
-            { id: 5, title: 'SaaS Platform', category: 'web', tags: ['React', 'Node.js'], image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=500&fit=crop', color: 'from-green-500 to-teal-600' },
-            { id: 6, title: 'Banking App', category: 'mobile', tags: ['Flutter', 'UI/UX'], image: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?w=600&h=500&fit=crop', color: 'from-indigo-500 to-purple-600' },
-            { id: 7, title: 'Portfolio Creative', category: 'uiux', tags: ['Web Design', 'Animation'], image: 'https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?w=600&h=500&fit=crop', color: 'from-yellow-500 to-orange-600' },
-            { id: 8, title: 'Restaurant Brand', category: 'branding', tags: ['Logo', 'Packaging'], image: 'https://images.unsplash.com/photo-1572021335469-31706a17aaef?w=600&h=500&fit=crop', color: 'from-red-500 to-pink-600' },
-            { id: 9, title: 'Learning Platform', category: 'web', tags: ['Vue.js', 'Laravel'], image: 'https://images.unsplash.com/photo-1501504905252-473c47e087f8?w=600&h=500&fit=crop', color: 'from-blue-500 to-cyan-600' }
-        ];
-
-        const projectsGrid = document.getElementById('projectsGrid');
-        
-        function renderProjects(filter = 'all') {
-            const filtered = filter === 'all' ? projects : projects.filter(p => p.category === filter);
-            projectsGrid.innerHTML = filtered.map(p => `
-                <div class="project-card card-hover group cursor-pointer" data-category="${p.category}">
-                    <div class="relative overflow-hidden rounded-2xl aspect-[4/3] mb-4">
-                        <img src="${p.image}" alt="${p.title}" class="project-image w-full h-full object-cover">
-                        <div class="absolute inset-0 bg-gradient-to-t ${p.color} opacity-0 group-hover:opacity-80 transition-opacity duration-500"></div>
-                        <div class="project-overlay absolute inset-0 flex items-center justify-center">
-                            <div class="text-center text-white">
-                                <i class="fas fa-external-link-alt text-3xl mb-3"></i>
-                                <h3 class="text-xl font-display font-bold">${p.title}</h3>
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <h3 class="text-xl font-display font-bold text-gray-900 dark:text-white mb-2">${p.title}</h3>
-                        <div class="flex flex-wrap gap-2">
-                            ${p.tags.map(t => `<span class="text-xs px-3 py-1 glass rounded-full text-gray-700 dark:text-gray-300">${t}</span>`).join('')}
-                        </div>
-                    </div>
-                </div>
-            `).join('');
-        }
-
-        renderProjects();
-
-        // Filtros de proyectos
-        function filterProjects(filter) {
-            document.querySelectorAll('.filter-btn').forEach(btn => {
-                btn.classList.remove('active');
-                btn.classList.add('glass', 'text-gray-700', 'dark:text-gray-300');
-            });
-            event.target.classList.add('active');
-            event.target.classList.remove('glass', 'text-gray-700', 'dark:text-gray-300');
-            renderProjects(filter);
-        }
-
-        // Skills tabs
-        function showSkills(category) {
-            document.querySelectorAll('.skills-content').forEach(c => c.classList.add('hidden'));
-            document.getElementById(`skills-${category}`).classList.remove('hidden');
-            
-            document.querySelectorAll('.skill-tab').forEach(t => {
-                t.classList.remove('active', 'gradient-bg', 'text-white');
-                t.classList.add('glass', 'text-gray-700', 'dark:text-gray-300');
-            });
-            event.target.classList.add('active', 'gradient-bg', 'text-white');
-            event.target.classList.remove('glass', 'text-gray-700', 'dark:text-gray-300');
-        }
-
-        // Formulario
-        function handleSubmit(e) {
-            e.preventDefault();
-            showToast('¡Mensaje enviado! Te responderé pronto 🚀');
-            e.target.reset();
-        }
-
-        // Toast
-        function showToast(msg) {
-            const toast = document.createElement('div');
-            toast.className = 'fixed bottom-24 right-6 gradient-bg text-white px-6 py-3 rounded-full shadow-2xl z-50 animate-slide-up font-semibold';
-            toast.innerHTML = `<i class="fas fa-check-circle mr-2"></i>${msg}`;
-            document.body.appendChild(toast);
-            setTimeout(() => toast.remove(), 3000);
-        }
-
         // Dark mode
         const themeToggle = document.getElementById('themeToggle');
         if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
@@ -1183,14 +1118,46 @@
         document.getElementById('mobileMenuBtn').addEventListener('click', () => {
             document.getElementById('mobileMenu').classList.toggle('hidden');
         });
-
         document.querySelectorAll('#mobileMenu a').forEach(link => {
             link.addEventListener('click', () => {
                 document.getElementById('mobileMenu').classList.add('hidden');
             });
         });
 
-        // Scroll to top
+        // Works filter
+        function filterWorks(category) {
+            document.querySelectorAll('.work-filter').forEach(btn => {
+                btn.classList.remove('bg-brand-black', 'dark:bg-brand-cream', 'text-brand-cream', 'dark:text-brand-black');
+                btn.classList.add('bg-brand-cream', 'dark:bg-brand-black');
+            });
+            event.target.classList.remove('bg-brand-cream', 'dark:bg-brand-black');
+            event.target.classList.add('bg-brand-black', 'dark:bg-brand-cream', 'text-brand-cream', 'dark:text-brand-black');
+            
+            document.querySelectorAll('.project-card').forEach(card => {
+                if (category === 'all' || card.dataset.category === category) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // Form
+        function handleSubmit(e) {
+            e.preventDefault();
+            showToast('¡Mensaje enviado! Te responderé pronto ✦');
+            e.target.reset();
+        }
+
+        function showToast(msg) {
+            const toast = document.createElement('div');
+            toast.className = 'fixed bottom-24 right-6 bg-brand-black text-brand-cream border-brutal shadow-brutal-lg px-6 py-4 z-50 font-mono text-sm font-bold uppercase tracking-wider animate-bounce-soft';
+            toast.innerHTML = `<i class="fas fa-check-circle mr-2 text-brand-yellow"></i>${msg}`;
+            document.body.appendChild(toast);
+            setTimeout(() => toast.remove(), 3000);
+        }
+
+        // Scroll top
         const scrollTopBtn = document.getElementById('scrollTop');
         window.addEventListener('scroll', () => {
             if (window.scrollY > 500) {
@@ -1215,10 +1182,10 @@
             });
         }, { threshold: 0.1 });
 
-        document.querySelectorAll('.card-hover, .hover-lift').forEach(el => {
+        document.querySelectorAll('.card-brutal, .project-card').forEach(el => {
             el.style.opacity = '0';
             el.style.transform = 'translateY(30px)';
-            el.style.transition = 'opacity 0.8s ease-out, transform 0.8s ease-out';
+            el.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
             observer.observe(el);
         });
     </script>
